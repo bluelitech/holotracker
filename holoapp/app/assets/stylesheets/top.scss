@@ -1,0 +1,60 @@
+@import "colors";
+
+.chart {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    max-width: 1200px;
+
+    &-title {
+        font-size: 1.75rem;
+        font-weight: bold;
+        margin: 0px 10px 20px;
+        text-align: center;
+    }
+    &-body {
+        width: 100%;
+        height: 900px;
+        position: relative;
+        overflow: hidden;
+    }
+    &-legend {
+        font-weight: bold;
+    }
+    @keyframes chart-loading {
+        0% { transform: rotate( 0deg ); }
+        100% { transform: rotate( 360deg ); }
+    }
+}
+.legend {
+    &-area {
+        width: 100%;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        margin-top: 20px;
+    }
+    &-space {
+        width: 160px;
+        white-space: nowrap;
+        margin-left: 0px !important;
+    }
+}
+.name-cut {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 100%;
+}
+
+.apexcharts-legend-series {
+    margin-left: 0px !important;
+}
+.apexcharts-legend-text {
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    width: 90%;
+}
+

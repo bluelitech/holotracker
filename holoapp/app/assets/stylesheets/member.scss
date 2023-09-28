@@ -1,0 +1,78 @@
+@import "colors";
+
+.emphasis {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 0px 10px;
+
+    &-right {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 10px 0px 0px 20px;
+    }
+    &-thumbnails {
+        width: 86px;
+        height: 86px;
+        border-radius: 50%;
+        border: 1px solid $border;
+    }
+    &-kana {
+        font-size: 1rem;
+    }
+    &-name {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+}
+.profile {
+    width: 100%;
+    table {
+        width: 100%;
+        max-width: 600px;
+        border-top: 1px solid $border;
+    }
+    & tr:hover {
+        background-color: rgba($blue, 0.1);
+    }
+    & td {
+        border-top: none;
+        border-bottom: 1px solid $border;
+        height: 48px;
+        padding: 0px 20px;
+    }
+}
+.data-subscriber {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.data-graph-wrapper {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+}
+.data-graph {
+    width: 100%;
+    max-width: 1000px;
+    height: 450px;
+    margin-bottom: 60px;
+    min-height: 450px;
+
+    &-loading {
+        position: absolute;
+        top: 30%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 4rem;
+        height: 4rem;
+        border: 8px solid $border;
+        border-top: 7px solid $blue;
+        border-radius: 50px;
+        animation: chart-loading 700ms linear 0ms infinite normal both;
+    }
+}

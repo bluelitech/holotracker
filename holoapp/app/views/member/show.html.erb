@@ -1,0 +1,116 @@
+<%= render 'shared/header' %>
+<div class="main">
+    <div id="main-left" class="main-left">
+        <%= render 'shared/sidemenu' %>
+    </div>
+    <div id="main-right" class="main-right">
+        <div id="section-emphasis" class="section emphasis">
+            <div class="emphasis-left">
+                <img src="<% if @member.thumbnails %><%= @member.thumbnails %><% else %>/assets/human.svg<% end %>" class="emphasis-thumbnails" alt="<%= @member.name %>" youtubeid="<%= @member.youtube_id %>" />
+            </div>
+            <div class="emphasis-right">
+                <div class="emphasis-kana"><%= @member.name_kana %></div>
+                <div class="emphasis-name"><%= @member.name %></div>
+            </div>
+        </div>
+        <div id="section-profile" class="section profile">
+            <table>
+                <tbody>
+                    <tr>
+                        <td>チャンネル名</td>
+                        <td><%= @member.channel_name %></td>
+                    </tr>
+                    <tr>
+                        <td>チャンネル登録者数</td>
+                        <td><%= number_with_delimiter(@member.subscriber) %></td>
+                    </tr>
+                    <tr>
+                        <td>所属</td>
+                        <td><%= @member.belong %></td>
+                    </tr>
+                    <tr>
+                        <td>デビュー日</td>
+                        <td id="debut_date"><%= @member.debut %></td>
+                    </tr>
+                    <% if @member.graduation %>
+                    <tr>
+                        <td>卒業日</td>
+                        <td><%= @member.graduation %></td>
+                    </tr>
+                    <% end %>
+                    <tr>
+                        <td>誕生日</td>
+                        <td><%= @member.birthday %></td>
+                    </tr>
+                    <tr>
+                        <td>動画数</td>
+                        <td><%= number_with_delimiter(@member.video_count) %>本</td>
+                    </tr>
+                    <tr>
+                        <td>動画再生数</td>
+                        <td><%= number_with_delimiter(@member.video_viewcount) %>回</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>  
+        <div id="section-data" class="section">
+            <div class="section-header bg-blue">
+                <div class="section-header-title">各種データ</div>
+            </div>
+            <div class="section-body">
+                <div class="section-content">
+                    <div class="section-content-title">チャンネル登録者数</div>
+                    <div class="section-content-subtitle">- 全期間 -</div>
+                    <div class="data-graph-wrapper">
+                        <div id="subscriber-all" class="data-graph"></div>
+                        <div class="loading-wrapper">
+                            <div id ="subscriber-all-loading" class="loading"></div>
+                        </div>
+                    </div>
+                    <div class="section-content-subtitle">- 直近24時間 -</div>
+                    <div class="data-graph-wrapper">
+                        <div id="subscriber-24hours" class="data-graph"></div>
+                        <div class="loading-wrapper">
+                            <div id ="subscriber-24hours-loading" class="loading"></div>
+                        </div>
+                    </div>
+                    <div class="section-content-subtitle">- 直近14日間 -</div>
+                    <div class="data-graph-wrapper">
+                        <div id="subscriber-14days" class="data-graph"></div>
+                        <div class="loading-wrapper">
+                            <div id ="subscriber-14days-loading" class="loading"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-title">動画再生数</div>
+                    <div class="data-graph-wrapper">
+                        <div id="viewcount" class="data-graph"></div>
+                        <div class="loading-wrapper">
+                            <div id ="viewcount-loading" class="loading"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section-round" class="section">
+            <div class="section-header bg-blue">
+                <div class="section-header-title">キリ番履歴</div>
+            </div>
+            <div class="section-body">
+                <div class="section-content round-table">
+                    <div class="table-wrapper">
+                        <table id="round-table" class="table round"></table>
+                        <div class="loading-wrapper">
+                            <div id ="round-table-loading" class="loading"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% @members.each do |member| %>
+    <input type="hidden" name="<%= member.name %>" name_kana="<%= member.name_kana %>" name_url="<%= member.name_url %>" belong="<%= member.belong %>" class="member_data">
+<% end %>
+<%= javascript_include_tag "member.js" %>

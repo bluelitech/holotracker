@@ -1,0 +1,77 @@
+<%= render 'shared/header' %>
+<div class="main">
+    <div id="main-left" class="main-left">
+        <%= render 'shared/sidemenu' %>
+    </div>
+    <div id="main-right" class="main-right">
+        <div id="section-chart" class="section">
+            <div class="chart">
+                <div class="chart-title">ホロライブチャンネル登録者数遷移</div>
+                <div class="chart-body">
+                    <div id="chart"></div>
+                    <div class="loading-wrapper">
+                        <div id ="chart-loading" class="loading"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section-data" class="section">
+            <div class="section-header bg-blue pointer">
+                <div class="section-header-title">最新データ</div>
+                <div id="section-header-subtitle" class="section-subtitle"><%= @latests[0].updated_at.strftime("%Y-%m-%d %H:%M") %> JST</div>
+            </div>
+            <div id="latest" class="section-body">
+                <div class="table-wrapper">
+                    <table id="latest-data-table" class="table">
+                        <thead>
+                            <tr class="pointer">
+                                <th class="sort" data-sort="name">名前</th>
+                                <th class="sort wide" data-sort="belong">所属</th>
+                                <th class="sort" data-sort="subscriber">登録者数</th>
+                                <th class="sort wide" data-sort="diff">前日比</th>
+                                <th class="sort wide" data-sort="round">キリ番日時</th>
+                            </tr>
+                        </thead>
+                        <tbody class="list table-body">
+                            <% @latests.each do |data| %>
+                                <tr class="pointer" path="<%= data.member.name_url %>">
+                                    <td class="table-body-name-area" title="<%= data.member.name_kana %>">
+                                        <span class="name hidden"><%= data.member.name_kana %></span>
+                                        <div class="table-body-name-area-flex">
+                                            <img src="<% if data.member.thumbnails %><%= data.member.thumbnails %><% else %>/assets/human.svg<% end %>" class="table-thumbnails" alt="<%= data.member.name %>" youtubeid="<%= data.member.youtube_id %>" />
+                                            <%= data.member.name %>
+                                            <% if data.member.graduation %>
+                                                <img src="/assets/graduation.svg" class="table-graduation-icon" alt="graduation" title="卒業生" />
+                                            <% end %>
+                                        </div>
+                                    </td>
+                                    <td class="belong wide"><%= data.member.belong %></td>
+                                    <td>
+                                        <span class="subscriber hidden"><%= data.subscriber %></span>
+                                        <%= number_with_delimiter(data.subscriber) %>
+                                    </td>
+                                    <td class="wide">
+                                        <span class="diff hidden"><%= data.diff %></span>
+                                        <% if data.diff > 0 %>+<% elsif data.diff == 0 %>±<% else %>-<% end %><%= number_with_delimiter(data.diff) %>
+                                    </td>
+                                    <td class="wide">
+                                        <span class="round hidden"><%= data.round_datetime %></span>
+                                        <% if data.round_subscriber == 0 %>
+                                            -
+                                        <% else %>
+                                            <%= data.round_datetime.strftime("%Y-%m-%d %H:%M") %> (<%= number_with_delimiter(data.round_subscriber/10000) %>万人)
+                                        <% end %>
+                                    </td>
+                                </tr>
+                            <% end %>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<% @members.each do |member| %>
+    <input type="hidden" member_id="<%= member.id %>" name="<%= member.name %>" name_kana="<%= member.name_kana %>" name_url="<%= member.name_url %>" belong="<%= member.belong %>" debut="<%= member.debut %>" class="member_data">
+<% end %>
+<%= javascript_include_tag "holochart.js" %>
