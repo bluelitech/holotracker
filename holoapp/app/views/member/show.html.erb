@@ -111,6 +111,6 @@
     </div>
 </div>
 <% @members.each do |member| %>
-    <input type="hidden" name="<%= member.name %>" name_kana="<%= member.name_kana %>" name_url="<%= member.name_url %>" belong="<%= member.belong %>" class="member_data">
+    <input type="hidden" name="<%= member.name %>" name_kana="<%= member.name_kana %>" name_url="<%= member.name_url %>" belong="<%= member.belong %>" created_at="<%= member.created_at %>" class="member_data">
 <% end %>
 <%= javascript_include_tag "member.js" %>

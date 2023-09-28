@@ -27,7 +27,7 @@ function render24hoursData(name) {
             const subscriber = data.subscriber;
             let subscriberDiff = 0;
             if (i + 1 < alldata.length) {
-                const nextData = data[i+1];
+                const nextData = alldata[i+1];
                 subscriberDiff = subscriber - nextData.subscriber;
             }
             if (subscriberMin == -1 || subscriber < subscriberMin) subscriberMin = subscriber - 10000;
@@ -42,7 +42,7 @@ function render24hoursData(name) {
         const subscriberListNum = subscriberList.length;
         for (let i=0; i < 24 - (subscriberListNum % 24); i++) {
             subscriberList.unshift(subscriberList.length > 0 ? subscriberList[0] : 0);
-            subscriberDiffList.unshift(subscriberDiffList.length > 0 ? subscriberDiffList[0] : 0);
+            subscriberDiffList.unshift(0);
         }
         
         const existData = alldata.length > 0;
@@ -108,9 +108,9 @@ function render14daysData(name) {
         const viewCountListNum = viewCountList.length;
         for (let i=0; i < 14 - (viewCountListNum % 14); i++) {
             subscriberList.unshift(subscriberList.length > 0 ? subscriberList[0] : 0);
-            subscriberDiffList.unshift(subscriberDiffList.length > 0 ? subscriberDiffList[0] : 0);
+            subscriberDiffList.unshift(0);
             viewCountList.unshift(viewCountList.length > 0 ? viewCountList[0] : 0);
-            viewCountDiffList.unshift(viewCountDiffList.length > 0 ? viewCountDiffList[0] : 0);
+            viewCountDiffList.unshift(0);
         }
         
         const existData = alldata.length > 0;
@@ -380,26 +380,32 @@ function renderRoundTable(target, path) {
     fetch(path)
     .then((response) => response.json())
     .then((alldata) => {
+        alldata.sort((a, b) => b.subscriber - a.subscriber);
         const roundTableElem = $('#round-table');
         const debut_date = $('#debut_date').text();
         const debut_dt = new Date(debut_date);
+        const holo_dt = new Date('2020-08-15 00:00');
+        const created_at = new Date($('.member_data').attr('created_at'));
         const tableHeaderElem = `<thead><tr><th>達成日時</th><th>登録者数</th><th>経過日数</th></tr></thead>`;
         roundTableElem.append(tableHeaderElem);
         let tableBodyElem = `<tbody class="table-body">`;
         for (let i=0; i<alldata.length; i++) {
             const round_row = alldata[i];
-            const datetime = round_row['datetime'];
             const subscriber = round_row["subscriber"];
+            let datetime = round_row['datetime'];
             if (subscriber == 0) break;
             const diff = round_row["diff"];
             const round_before = (subscriber - diff) / 10000;
             let diff_dt = -1;
             let diff_debut_dt = -1;
-            if (i+1 < alldata.length) {
-                const dt = new Date(datetime);
+            const dt = new Date(datetime);
+            if (i + 1 < alldata.length) {
                 const before_dt = new Date(alldata[i+1]['datetime']);
                 diff_dt = Math.ceil((dt - before_dt) / 86400000);
-                diff_debut_dt = Math.ceil((dt - debut_dt) / 86400000);
+            }
+            diff_debut_dt = Math.ceil((dt - debut_dt) / 86400000);
+            if (dt <= holo_dt || (dt <= created_at && datetime.indexOf('00:00') != -1)) {
+                datetime = datetime.slice(0, 10);
             }
             tableBodyElem += `<tr>`;
             tableBodyElem += `<td class="datetime">${datetime}</td>`;

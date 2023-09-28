@@ -21,6 +21,6 @@ class MemberController < ApplicationController
     end
     def round
         rounds = JSON.load(File.read("#{Rails.root}/../data/rounds.json"))
-        render json: rounds[params[:name]].sort_by {|a| a[:subscriber]}.reverse
+        render json: rounds[params[:name]]
     end
 end
