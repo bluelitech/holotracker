@@ -19,9 +19,24 @@ function sortTable() {
 }
 
 function setEvent() {
-    $('#latest-data-table tbody tr').on('click', function() {
-        const path = $(this).attr('path');
-        location.href = `/member/${path}`;
+    let isDragging = false;
+    $('#latest-data-table tbody tr')
+    .on('mousedown', function(e) {
+        if (e.button == 1) {
+            window.open(`/member/${$(this).attr('path')}`);
+        }
+        $(window).on('mousemove',() => {
+            isDragging = true;
+            $(window).unbind("mousemove");
+        });
+    })
+    .on('mouseup', function(e) {
+        let wasDragging = isDragging;
+        isDragging = false;
+        $(window).unbind("mousemove");
+        if (!wasDragging && e.which == 1) {
+            location.href = `/member/${$(this).attr('path')}`;
+        }
     });
     $('#latest-data-table .table-body-name-area img').on('click', function(e) {
         e.stopPropagation();
