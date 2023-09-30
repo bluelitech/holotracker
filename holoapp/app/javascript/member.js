@@ -4,16 +4,17 @@
 
 
 $(function() {
-    const name = location.pathname.replace('/member/', '');
-    renderSubscriberChart('#subscriber-all', `/member/${name}/subscriber_all`);
-    render24hoursData(name);
-    render14daysData(name);
-    renderRoundTable('#round-table', `/member/${name}/round`);
+    const path = location.pathname;
+    const isEnglish = path.match(/^\/en/) ? true : false;
+    renderSubscriberChart('#subscriber-all', `${path}/subscriber_all`, isEnglish);
+    render24hoursData(path, isEnglish);
+    render14daysData(path, isEnglish);
+    renderRoundTable('#round-table', `${path}/round`, isEnglish);
 });
 
 
-function render24hoursData(name) {
-    fetch(`/member/${name}/subscriber_24hours`)
+function render24hoursData(path, isEnglish) {
+    fetch(`${path}/subscriber_24hours`)
     .then((response) => response.json())
     .then((alldata) => {
         const subscriberDiffList = [];
@@ -52,19 +53,20 @@ function render24hoursData(name) {
             lineDataList: subscriberList,
             columnDataList: subscriberDiffList,
             labelList: dateLabelList,
-            lineTitle: 'チャンネル登録者数',
-            columnTitle: '1時間あたりの増加数',
+            labelType: 'hours',
+            lineTitle: isEnglish ? 'Subscribers' : 'チャンネル登録者数',
+            columnTitle: isEnglish ? 'Diff' : '1時間あたりの増加数',
             lineMin: existData ? subscriberMin : -1000,
             lineMax: existData ? subscriberMax : 1000,
             columnMin: existData ? subscriberDiffMin : -1000,
             columnMax: existData ? subscriberDiffMax : 1000,
         }
-        renderMixedChart(subscriberParams);
+        renderMixedChart(subscriberParams, isEnglish);
     });
 }
 
-function render14daysData(name) {
-    fetch(`/member/${name}/subscriber_14days`)
+function render14daysData(path, isEnglish) {
+    fetch(`${path}/subscriber_14days`)
     .then((response) => response.json())
     .then((alldata) => {
         const viewCountDiffList = [];
@@ -120,27 +122,29 @@ function render14daysData(name) {
             lineDataList: subscriberList,
             columnDataList: subscriberDiffList,
             labelList: dateLabelList,
-            lineTitle: 'チャンネル登録者数',
-            columnTitle: '1日あたりの増加数',
+            labelType: 'days',
+            lineTitle: isEnglish ? 'Subscribers' : 'チャンネル登録者数',
+            columnTitle: isEnglish ? 'Diff' : '1日あたりの増加数',
             lineMin: existData ? subscriberMin : -1000,
             lineMax: existData ? subscriberMax : 1000,
             columnMin: existData ? subscriberDiffMin : -1000,
             columnMax: existData ? subscriberDiffMax : 1000,
         }
         const viewCountParams = {
-            target: "#viewcount",
+            target: '#viewcount',
             lineDataList: viewCountList,
             columnDataList: viewCountDiffList,
             labelList: dateLabelList,
-            lineTitle: "総再生数",
-            columnTitle: "1日あたりの再生数",
+            labelType: 'days',
+            lineTitle: isEnglish ? 'Viewcounts' : '総再生数',
+            columnTitle: isEnglish ? 'Diff' : '1日あたりの再生数',
             lineMin: existData ? viewCountMin : -1000,
             lineMax: existData ? viewCountMax : 1000,
             columnMin: existData ? viewCountDiffMin : -1000,
             columnMax: existData ? viewCountDiffMax : 1000,
         }
-        renderMixedChart(subscriberParams);
-        renderMixedChart(viewCountParams);
+        renderMixedChart(subscriberParams, isEnglish);
+        renderMixedChart(viewCountParams, isEnglish);
     });
 }
 
@@ -170,14 +174,14 @@ function makeDateLabel(makeType, dateRange) {
 }
 
 
-function renderSubscriberChart(target, path) {
+function renderSubscriberChart(target, path, isEnglish) {
     fetch(path)
     .then((response) => response.json())
     .then((alldata) => {
         const dataset = {}
         for (let i=0; i<alldata.length; i++) {
             const data = alldata[i];
-            const name = data.name;
+            const name = isEnglish ? data.name_en : data.name;
             const subscriber = data.subscriber;
             const dt = data.datetime;
             if (name in dataset) {
@@ -234,7 +238,7 @@ function renderSubscriberChart(target, path) {
                 enabled: true,
                 shared: true,
                 x: {
-                    format: 'yyyy年M月d日'
+                    format: isEnglish ? 'yyyy-MM-dd' : 'yyyy年M月d日'
                 },
                 y: {
                     formatter: function(value, {series, seriesIndex, dataPointIndex, w}) {
@@ -249,7 +253,7 @@ function renderSubscriberChart(target, path) {
             xaxis: {
                 type: "datetime",
                 labels: {
-                    format: 'yyyy年M月'
+                    format: isEnglish ? 'yyyy-MM' : 'yyyy年M月'
                 }
             },
             yaxis: {
@@ -301,7 +305,7 @@ function renderSubscriberChart(target, path) {
 }
 
 
-function renderMixedChart(params) {
+function renderMixedChart(params, isEnglish) {
     const dataSeries = [
         {name: params.lineTitle, type: "line", data: params.lineDataList},
         {name: params.columnTitle, type: "column", data: params.columnDataList},
@@ -312,7 +316,15 @@ function renderMixedChart(params) {
         chart: {height: 400, width: "100%", type: "line", zoom: {enabled: false}},
         stroke: {show: true, curve: "straight", width: [3, 0], colors: ["#007bff", "#282828"]},
         dataLabels: {enabled: true, enabledOnSeries: [1]},
-        xaxis: {type: "datetime", labels: {datetimeUTC: false, format: 'M月d日'}},
+        xaxis: {
+            type: "datetime",
+            labels: {
+                datetimeUTC: false,
+                format: params.labelType == 'days'
+                    ? (isEnglish ? 'M/d' : 'M月d日')
+                    : 'H'
+            }
+        },
         yaxis: [
             {
                 opposite: true,
@@ -345,7 +357,11 @@ function renderMixedChart(params) {
         tooltip: {
             enabled: true,
             shared: true,
-            x: {format: 'yyyy年M月d日'},
+            x: {
+                format: params.labelType == 'days'
+                    ? (isEnglish ? 'yyyy-MM-dd' : 'yyyy年M月d日')
+                    : (isEnglish ? 'yyyy-MM-dd HH:00' : 'yyyy年M月d日 H時')
+            },
             y: {
                 formatter: function(value, {series, seriesIndex, dataPointIndex, w}) {
                     if (value) return value.toLocaleString();
@@ -376,7 +392,7 @@ function renderMixedChart(params) {
 }
 
 
-function renderRoundTable(target, path) {
+function renderRoundTable(target, path, isEnglish) {
     fetch(path)
     .then((response) => response.json())
     .then((alldata) => {
@@ -386,8 +402,6 @@ function renderRoundTable(target, path) {
         const debut_dt = new Date(debut_date);
         const holo_dt = new Date('2020-08-15 00:00');
         const created_at = new Date($('.member_data').attr('created_at'));
-        const tableHeaderElem = `<thead><tr><th>達成日時</th><th>登録者数</th><th>経過日数</th></tr></thead>`;
-        roundTableElem.append(tableHeaderElem);
         let tableBodyElem = `<tbody class="table-body">`;
         for (let i=0; i<alldata.length; i++) {
             const round_row = alldata[i];
@@ -412,9 +426,17 @@ function renderRoundTable(target, path) {
             tableBodyElem += `<td>${subscriber.toLocaleString()}</td>`;
             tableBodyElem += `<td>`;
             if (diff_debut_dt > 0) {
-                tableBodyElem += `${round_before}万人から${diff_dt.toLocaleString()}日後（デビューから${diff_debut_dt.toLocaleString()}日後）`;
+                if (isEnglish) {
+                    tableBodyElem += `${diff_dt.toLocaleString()} days after ${round_before / 100}M (${diff_debut_dt.toLocaleString()} days after debut)`;
+                } else {
+                    tableBodyElem += `${round_before}万人から${diff_dt.toLocaleString()}日後（デビューから${diff_debut_dt.toLocaleString()}日後）`;
+                }
             } else if (diff_debut_dt == 0) {
-                tableBodyElem += `${round_before}万人から${diff_dt.toLocaleString()}日後（デビュー当日）`;
+                if (isEnglish) {
+                    tableBodyElem += `${diff_dt.toLocaleString()} days after ${round_before / 100}M (Debut day)`;
+                } else {
+                    tableBodyElem += `${round_before}万人から${diff_dt.toLocaleString()}日後（デビュー当日）`;
+                }
             } else {
                 debut_subscriber = subscriber + 1;
                 tableBodyElem += `デビュー発表`;

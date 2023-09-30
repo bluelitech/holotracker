@@ -54,6 +54,9 @@ gem "apexcharts"
 # List.js
 gem "listjs-rails"
 
+# i18n
+gem "rails-i18n"
+
 gem "groupdate"
 
 gem "gon"

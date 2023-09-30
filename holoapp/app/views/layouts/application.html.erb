@@ -38,4 +38,16 @@
   <body>
     <%= yield %>
   </body>
+  <% @members.each do |member| %>
+    <input
+      type="hidden"
+      member_id="<%= member.id %>"
+      name="<% if @locale == 'en' %><%= member.name_en %><% else %><%= member.name %><% end %>"
+      name_kana="<%= member.name_kana %>"
+      name_url="<%= member.name_url %>"
+      belong="<% if @locale == 'en' %><%= member.belong_en %><% else %><%= member.belong %><% end %>"
+      created_at="<%= member.created_at %>"
+      debut="<%= member.debut %>"
+      class="member_data" />
+  <% end %>
 </html>

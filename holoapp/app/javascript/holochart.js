@@ -35,7 +35,8 @@ function setEvent() {
         isDragging = false;
         $(window).unbind("mousemove");
         if (!wasDragging && e.which == 1) {
-            location.href = `/member/${$(this).attr('path')}`;
+            const lang = location.pathname.replace(/\//g, '');
+            location.href = `/${lang}/member/${$(this).attr('path')}`;
         }
     });
     $('#latest-data-table .table-body-name-area img').on('click', function(e) {
@@ -216,7 +217,7 @@ function relocation() {
         if (belong != '') {
             let belongMembers = '';
             belongs[belong].forEach(member => {
-                belongMembers += `.apexcharts-legend-series:contains('${member}'),`;
+                belongMembers += `.apexcharts-legend-series:contains("${member}"),`;
             })
             $(belongMembers.slice(0, -1)).appendTo(`#belong_${getAscii(belong)}`);
         }

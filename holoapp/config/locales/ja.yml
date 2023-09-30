@@ -1,0 +1,50 @@
+ja:
+  defaults:
+    header:
+      title: "ホロとらっかー"
+  top:
+    chart:
+      title: "ホロライブチャンネル登録者数遷移"
+    data:
+      title: "最新データ"
+      table:
+        name: "名前"
+        belong: "所属"
+        subscriber: "登録者数"
+        subscriber_unit: "万人"
+        diff: "前日比"
+        round: "キリ番日時"
+        graduation: "卒業生"
+  member:
+    profile:
+      table:
+        channel: "チャンネル名"
+        subscriber: "チャンネル登録者数"
+        belong: "所属"
+        debut: "デビュー日"
+        graduation: "卒業日"
+        birthday: "誕生日"
+        video_count: "動画数"
+        video_count_unit: "本"
+        video_viewcount: "動画再生数"
+        video_viewcount_unit: "回"
+    data:
+      header:
+        title: "各種データ"
+      body:
+        subscriber:
+          title: "チャンネル登録者数"
+          subtitle:
+            all: "全期間"
+            24hours: "直近24時間"
+            14days: "直近14日間"
+        viewcount:
+          title: "動画再生数"
+    history:
+      header:
+        title: "キリ番履歴"
+      body:
+        table:
+          datetime: "達成日時"
+          subscriber: "登録者数"
+          diff: "経過日数"

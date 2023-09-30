@@ -6,7 +6,7 @@
     <div id="main-right" class="main-right">
         <div id="section-chart" class="section">
             <div class="chart">
-                <div class="chart-title">ホロライブチャンネル登録者数遷移</div>
+                <div class="chart-title"><%= t('top.chart.title') %></div>
                 <div class="chart-body">
                     <div id="chart"></div>
                     <div class="loading-wrapper">
@@ -17,7 +17,7 @@
         </div>
         <div id="section-data" class="section">
             <div class="section-header bg-blue pointer">
-                <div class="section-header-title">最新データ</div>
+                <div class="section-header-title"><%= t('top.data.title') %></div>
                 <div id="section-header-subtitle" class="section-subtitle"><%= @latests[0].updated_at.strftime("%Y-%m-%d %H:%M") %> JST</div>
             </div>
             <div id="latest" class="section-body">
@@ -25,27 +25,51 @@
                     <table id="latest-data-table" class="table">
                         <thead>
                             <tr class="pointer">
-                                <th class="sort" data-sort="name">名前</th>
-                                <th class="sort wide" data-sort="belong">所属</th>
-                                <th class="sort" data-sort="subscriber">登録者数</th>
-                                <th class="sort wide" data-sort="diff">前日比</th>
-                                <th class="sort wide" data-sort="round">キリ番日時</th>
+                                <th class="sort" data-sort="name"><%= t('top.data.table.name') %></th>
+                                <th class="sort wide" data-sort="belong"><%= t('top.data.table.belong') %></th>
+                                <th class="sort" data-sort="subscriber"><%= t('top.data.table.subscriber') %></th>
+                                <th class="sort wide" data-sort="diff"><%= t('top.data.table.diff') %></th>
+                                <th class="sort wide" data-sort="round"><%= t('top.data.table.round') %></th>
                             </tr>
                         </thead>
                         <tbody class="list table-body">
                             <% @latests.each do |data| %>
                                 <tr class="pointer" path="<%= data.member.name_url %>">
-                                    <td class="table-body-name-area" title="<%= data.member.name_kana %>">
-                                        <span class="name hidden"><%= data.member.name_kana %></span>
+                                    <td class="table-body-name-area" <% if @locale != 'en' %> title="<%= data.member.name_kana %><% end %>">
+                                        <span class="name hidden">
+                                            <% if @locale == 'en' %>
+                                                <%= data.member.name_en %>
+                                            <% else %>
+                                                <%= data.member.name_kana %>
+                                            <% end %>
+                                        </span>
                                         <div class="table-body-name-area-flex">
-                                            <img src="<% if data.member.thumbnails %><%= data.member.thumbnails %><% else %>/assets/human.svg<% end %>" class="table-thumbnails" alt="<%= data.member.name %>" youtubeid="<%= data.member.youtube_id %>" />
-                                            <%= data.member.name %>
+                                            <img
+                                                src="<% if data.member.thumbnails %><%= data.member.thumbnails %><% else %>/assets/human.svg<% end %>"
+                                                class="table-thumbnails"
+                                                alt="<% if @locale == 'en' %><%= data.member.name_en %><% else %><%= data.member.name %><% end %>"
+                                                youtubeid="<%= data.member.youtube_id %>" />
+                                            <% if @locale == 'en' %>
+                                                <%= data.member.name_en %>
+                                            <% else %>
+                                                <%= data.member.name %>
+                                            <% end %>
                                             <% if data.member.graduation %>
-                                                <img src="/assets/graduation.svg" class="table-graduation-icon" alt="graduation" title="卒業生" />
+                                                <img
+                                                    src="/assets/graduation.svg"
+                                                    class="table-graduation-icon"
+                                                    alt="graduation"
+                                                    title="<%= t('top.data.table.graduation') %>" />
                                             <% end %>
                                         </div>
                                     </td>
-                                    <td class="belong wide"><%= data.member.belong %></td>
+                                    <td class="belong wide">
+                                        <% if @locale == 'en' %>
+                                            <%= data.member.belong_en %>
+                                        <% else %>
+                                            <%= data.member.belong %>
+                                        <% end %>
+                                    </td>
                                     <td>
                                         <span class="subscriber hidden"><%= data.subscriber %></span>
                                         <%= number_with_delimiter(data.subscriber) %>
@@ -59,7 +83,7 @@
                                         <% if data.round_subscriber == 0 %>
                                             -
                                         <% else %>
-                                            <%= data.round_datetime.strftime("%Y-%m-%d %H:%M") %> (<%= number_with_delimiter(data.round_subscriber/10000) %>万人)
+                                            <%= data.round_datetime.strftime("%Y-%m-%d %H:%M") %> (<% if @locale == "en" %><%= data.round_subscriber.to_f/1000000 %><% else %><%= number_with_delimiter(data.round_subscriber/10000) %><% end %><%= t('top.data.table.subscriber_unit') %>)
                                         <% end %>
                                     </td>
                                 </tr>
@@ -71,7 +95,4 @@
         </div>
     </div>
 </div>
-<% @members.each do |member| %>
-    <input type="hidden" member_id="<%= member.id %>" name="<%= member.name %>" name_kana="<%= member.name_kana %>" name_url="<%= member.name_url %>" belong="<%= member.belong %>" debut="<%= member.debut %>" class="member_data">
-<% end %>
 <%= javascript_include_tag "holochart.js" %>

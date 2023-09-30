@@ -6,75 +6,93 @@
     <div id="main-right" class="main-right">
         <div id="section-emphasis" class="section emphasis">
             <div class="emphasis-left">
-                <img src="<% if @member.thumbnails %><%= @member.thumbnails %><% else %>/assets/human.svg<% end %>" class="emphasis-thumbnails" alt="<%= @member.name %>" youtubeid="<%= @member.youtube_id %>" />
+                <img
+                    src="<% if @member.thumbnails %><%= @member.thumbnails %><% else %>/assets/human.svg<% end %>"
+                    class="emphasis-thumbnails"
+                    alt="<% if @locale == 'en' %><%= @member.name_en %><% else %><%= @member.name %><% end %>"
+                    youtubeid="<%= @member.youtube_id %>" />
             </div>
             <div class="emphasis-right">
-                <div class="emphasis-kana"><%= @member.name_kana %></div>
-                <div class="emphasis-name"><%= @member.name %></div>
+                <% if @locale != 'en' %>
+                    <div class="emphasis-kana"><%= @member.name_kana %></div>
+                <% end %>
+                <div class="emphasis-name">
+                    <% if @locale == 'en' %>
+                        <%= @member.name_en %>
+                    <% else %>
+                        <%= @member.name %>
+                    <% end %>
+                </div>
             </div>
         </div>
         <div id="section-profile" class="section profile">
             <table>
                 <tbody>
                     <tr>
-                        <td>チャンネル名</td>
+                        <td><%= t('member.profile.table.channel') %></td>
                         <td><%= @member.channel_name %></td>
                     </tr>
                     <tr>
-                        <td>チャンネル登録者数</td>
+                        <td><%= t('member.profile.table.subscriber') %></td>
                         <td><%= number_with_delimiter(@member.subscriber) %></td>
                     </tr>
                     <tr>
-                        <td>所属</td>
-                        <td><%= @member.belong %></td>
+                        <td><%= t('member.profile.table.belong') %></td>
+                        <td>
+                            <% if @locale == 'en' %>
+                                <%= @member.belong_en %>
+                            <% else %>
+                                <%= @member.belong %>
+                            <% end %>
+                        </td>
                     </tr>
                     <tr>
-                        <td>デビュー日</td>
+                        <td><%= t('member.profile.table.debut') %></td>
                         <td id="debut_date"><%= @member.debut %></td>
                     </tr>
                     <% if @member.graduation %>
                     <tr>
-                        <td>卒業日</td>
+                        <td><%= t('member.profile.table.graduation') %></td>
                         <td><%= @member.graduation %></td>
                     </tr>
                     <% end %>
                     <tr>
-                        <td>誕生日</td>
+                        <td><%= t('member.profile.table.birthday') %></td>
                         <td><%= @member.birthday %></td>
                     </tr>
                     <tr>
-                        <td>動画数</td>
-                        <td><%= number_with_delimiter(@member.video_count) %>本</td>
+                        <td><%= t('member.profile.table.video_count') %></td>
+                        <td><%= number_with_delimiter(@member.video_count) %><%= t('member.profile.table.video_count_unit') %></td>
                     </tr>
                     <tr>
-                        <td>動画再生数</td>
-                        <td><%= number_with_delimiter(@member.video_viewcount) %>回</td>
+                        <td><%= t('member.profile.table.video_viewcount') %></td>
+                        <td><%= number_with_delimiter(@member.video_viewcount) %><%= t('member.profile.table.video_viewcount_unit') %></td>
                     </tr>
                 </tbody>
             </table>
         </div>  
         <div id="section-data" class="section">
             <div class="section-header bg-blue">
-                <div class="section-header-title">各種データ</div>
+                <div class="section-header-title"><%= t('member.data.header.title') %></div>
             </div>
             <div class="section-body">
                 <div class="section-content">
-                    <div class="section-content-title">チャンネル登録者数</div>
-                    <div class="section-content-subtitle">- 全期間 -</div>
+                    <div class="section-content-title"><%= t('member.data.body.subscriber.title') %></div>
+                    <div class="section-content-subtitle">- <%= t('member.data.body.subscriber.subtitle.all') %> -</div>
                     <div class="data-graph-wrapper">
                         <div id="subscriber-all" class="data-graph"></div>
                         <div class="loading-wrapper">
                             <div id ="subscriber-all-loading" class="loading"></div>
                         </div>
                     </div>
-                    <div class="section-content-subtitle">- 直近24時間 -</div>
+                    <div class="section-content-subtitle">- <%= t('member.data.body.subscriber.subtitle.24hours') %> -</div>
                     <div class="data-graph-wrapper">
                         <div id="subscriber-24hours" class="data-graph"></div>
                         <div class="loading-wrapper">
                             <div id ="subscriber-24hours-loading" class="loading"></div>
                         </div>
                     </div>
-                    <div class="section-content-subtitle">- 直近14日間 -</div>
+                    <div class="section-content-subtitle">- <%= t('member.data.body.subscriber.subtitle.14days') %> -</div>
                     <div class="data-graph-wrapper">
                         <div id="subscriber-14days" class="data-graph"></div>
                         <div class="loading-wrapper">
@@ -83,7 +101,7 @@
                     </div>
                 </div>
                 <div class="section-content">
-                    <div class="section-content-title">動画再生数</div>
+                    <div class="section-content-title"><%= t('member.data.body.viewcount.title') %></div>
                     <div class="data-graph-wrapper">
                         <div id="viewcount" class="data-graph"></div>
                         <div class="loading-wrapper">
@@ -95,12 +113,20 @@
         </div>
         <div id="section-round" class="section">
             <div class="section-header bg-blue">
-                <div class="section-header-title">キリ番履歴</div>
+                <div class="section-header-title"><%= t('member.history.header.title') %></div>
             </div>
             <div class="section-body">
                 <div class="section-content round-table">
                     <div class="table-wrapper">
-                        <table id="round-table" class="table round"></table>
+                        <table id="round-table" class="table round">
+                            <thead>
+                                <tr>
+                                    <th><%= t('member.history.body.table.datetime') %></th>
+                                    <th><%= t('member.history.body.table.subscriber') %></th>
+                                    <th><%= t('member.history.body.table.diff') %></th>
+                                </tr>
+                            </thead>
+                        </table>
                         <div class="loading-wrapper">
                             <div id ="round-table-loading" class="loading"></div>
                         </div>
@@ -110,7 +136,4 @@
         </div>
     </div>
 </div>
-<% @members.each do |member| %>
-    <input type="hidden" name="<%= member.name %>" name_kana="<%= member.name_kana %>" name_url="<%= member.name_url %>" belong="<%= member.belong %>" created_at="<%= member.created_at %>" class="member_data">
-<% end %>
 <%= javascript_include_tag "member.js" %>
