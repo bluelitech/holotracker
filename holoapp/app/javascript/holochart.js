@@ -19,7 +19,6 @@ function sortTable() {
 }
 
 function setEvent() {
-    let isDragging = false;
     $('#latest-data-table tbody tr')
     .on('mousedown', function(e) {
         if (e.button == 1) {
