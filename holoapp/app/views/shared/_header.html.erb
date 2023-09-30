@@ -1,6 +1,7 @@
 <div id="header" class="header">
     <div id="header-left" class="header-left">
         <span id="header-menu-btn" class="header-menu-btn btn-1"><span></span></span>
+        <div class="header-btn-highlight"></div>
     </div>
     <div id="header-center" class="header-center">
         <a href="<% if @locale == :ja || @locale == "ja" %>/<% else %>/<%= @locale %><% end %>">
@@ -9,6 +10,7 @@
     </div>
     <div id="header-right" class="header-right">
         <img class="header-right-icon" src="/assets/language.svg" />
+        <div class="header-btn-highlight"></div>
         <div id="select-language" class="header-right-language">
             <div class="header-right-language-row" lang="ja">日本語</div>
             <div class="header-right-language-row" lang="en">English</div>
