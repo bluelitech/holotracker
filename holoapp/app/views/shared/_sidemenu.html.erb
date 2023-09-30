@@ -1,2 +1,17 @@
 <ul id="sidemenu" class="sidemenu">
+    <% logger.debug @locale.inspect %>
+    <% @belongs.each do |belong, members| %>
+        <details>
+            <summary><%= belong %></summary>
+            <% members.each do |member| %>
+                <li>
+                    <% if @locale == :ja || @locale == "ja" %>
+                        <%= link_to member["name"], "/member/#{member['name_url']}" %>
+                    <% else %>
+                        <%= link_to member["name"], "/#{@locale}/member/#{member['name_url']}" %>
+                    <% end %>
+                </li>
+            <% end %>
+        </details>
+    <% end %>
 </ul>

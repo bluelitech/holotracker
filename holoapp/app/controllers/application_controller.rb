@@ -15,8 +15,8 @@ class ApplicationController < ActionController::Base
 
     def render_404
         locale = params[:locale]
-        if locale == :ja then
-            redirect_to '/'
+        if locale == :ja || locale == "ja" then
+            redirect_to "/"
         else
             redirect_to "/#{locale}"
         end

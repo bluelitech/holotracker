@@ -2,6 +2,8 @@ class MemberController < ApplicationController
     def show
         @members = Member.active_user
         @member = Member.one(params[:name]).first
+        @belongs = Member.belongs(@members, params[:locale])
+        @locale = params[:locale]
 
         unless @member
             redirect_to '/'
