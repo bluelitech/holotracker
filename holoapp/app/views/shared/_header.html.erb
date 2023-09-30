@@ -3,7 +3,9 @@
         <span id="header-menu-btn" class="header-menu-btn btn-1"><span></span></span>
     </div>
     <div id="header-center" class="header-center">
-        <div class="header-text"><%= t('defaults.header.title') %></div>
+        <a href="<% if @locale == :ja || @locale == "ja" %>/<% else %>/<%= @locale %><% end %>">
+            <div class="header-text"><%= t('defaults.header.title') %></div>
+        </a>
     </div>
     <div id="header-right" class="header-right">
         <img class="header-right-icon" src="/assets/setting.svg" />

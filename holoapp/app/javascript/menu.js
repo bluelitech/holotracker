@@ -14,7 +14,7 @@ function setEvent() {
             $('#main-right').removeClass('withmenu');
         }
     });
-    $('#header-center, .section-header.pointer').on('click', function() {
+    $('.section-header.pointer').on('click', function() {
         const path = location.pathname;
         if (path.match(/\/en/)) {
             location.href = '/en';
