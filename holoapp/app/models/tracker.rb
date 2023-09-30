@@ -30,6 +30,4 @@ class Tracker < ApplicationRecord
         .group('trackers.member_id, strftime("%Y%m", trackers.datetime)')
         .merge(Tracker.order("datetime DESC"))
     }
-    scope :test, -> {
-    }
 end

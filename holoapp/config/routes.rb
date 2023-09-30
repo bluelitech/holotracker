@@ -2,7 +2,6 @@ Rails.application.routes.draw do
   scope '(:locale)', locale: /#{I18n.available_locales.map(&:to_s).join('|')}/ do
     get '/', to: 'top#index'
     get '/tracker', to: 'top#tracker'
-    get '/test', to: 'top#test'
     get '/member', to: 'member#index'
     get '/member/:name', to: 'member#show'
     get '/member/:name/subscriber_all', to: 'member#subscriber_all'

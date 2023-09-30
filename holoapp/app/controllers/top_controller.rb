@@ -7,8 +7,4 @@ class TopController < ApplicationController
         @trackers = File.read("#{Rails.root}/../data/holodata.json")
         render json: @trackers
     end
-    def test
-        @trackers = Tracker.member_round(params[:name])
-        render json: @trackers
-    end
 end
