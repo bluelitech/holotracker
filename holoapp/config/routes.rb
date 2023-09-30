@@ -3,13 +3,14 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "articles#index"
-  get '/' => 'top#index'
-  get '/en' => 'top#index'
-  get '/tracker' => 'top#tracker'
-  get '/test' => 'top#test'
-  get '/member/:name' => 'member#show'
-  get '/member/subscriber_all/:name' => 'member#subscriber_all'
-  get '/member/subscriber_24hours/:name' => 'member#subscriber_24hours'
-  get '/member/subscriber_14days/:name' => 'member#subscriber_14days'
-  get '/member/round/:name' => 'member#round'
+  get '/', to: 'top#index'
+  get '/en', to: 'top#index'
+  get '/tracker', to: 'top#tracker'
+  get '/test', to: 'top#test'
+  get '/member', to: 'member#index'
+  get '/member/:name', to: 'member#show'
+  get '/member/:name/subscriber_all', to: 'member#subscriber_all'
+  get '/member/:name/subscriber_24hours', to: 'member#subscriber_24hours'
+  get '/member/:name/subscriber_14days', to: 'member#subscriber_14days'
+  get '/member/:name/round', to: 'member#round'
 end

@@ -5,15 +5,15 @@
 
 $(function() {
     const name = location.pathname.replace('/member/', '');
-    renderSubscriberChart('#subscriber-all', `/member/subscriber_all/${name}`);
+    renderSubscriberChart('#subscriber-all', `/member/${name}/subscriber_all`);
     render24hoursData(name);
     render14daysData(name);
-    renderRoundTable('#round-table', `/member/round/${name}`);
+    renderRoundTable('#round-table', `/member/${name}/round`);
 });
 
 
 function render24hoursData(name) {
-    fetch(`/member/subscriber_24hours/${name}`)
+    fetch(`/member/${name}/subscriber_24hours`)
     .then((response) => response.json())
     .then((alldata) => {
         const subscriberDiffList = [];
@@ -64,7 +64,7 @@ function render24hoursData(name) {
 }
 
 function render14daysData(name) {
-    fetch(`/member/subscriber_14days/${name}`)
+    fetch(`/member/${name}/subscriber_14days`)
     .then((response) => response.json())
     .then((alldata) => {
         const viewCountDiffList = [];

@@ -7,6 +7,14 @@ class MemberController < ApplicationController
             redirect_to '/'
         end
     end
+    def index
+        name = params[:name]
+        if name == nil then
+            redirect_to '/'
+        else
+            redirect_to "/member/#{name}"
+        end
+    end
     def subscriber_all
         subscriber_all = Tracker.member_all_subscriber(params[:name])
         render json: subscriber_all
