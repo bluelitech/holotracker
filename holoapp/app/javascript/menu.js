@@ -15,7 +15,12 @@ function setEvent() {
         }
     });
     $('#header-center, .section-header.pointer').on('click', function() {
-        window.location.href = '/';
+        const path = location.pathname;
+        if (path.match(/\/en/)) {
+            location.href = '/en';
+        } else {
+            location.href = '/';
+        }
     });
     $('#header-right').on('click', function() {
         const languageElem = $('#select-language');
@@ -33,7 +38,11 @@ function setEvent() {
             path = path.replace(`/${rowLang}`, '');
         }
         const selectLang = $(e.target).attr('lang');
-        location.href = `/${selectLang}${path}`;
+        if (selectLang == 'ja') {
+            location.href = path;
+        } else {
+            location.href = `/${selectLang}${path}`;
+        }
     });
     $('#banner_data').on('click', function() {
         location.reload();
