@@ -39,8 +39,10 @@ function setEvent() {
         }
         const selectLang = $(e.target).attr('lang');
         if (selectLang == 'ja') {
+            if (path == '') path = '/';
             location.href = path;
         } else {
+            if (path == '/') path = '';
             location.href = `/${selectLang}${path}`;
         }
     });
