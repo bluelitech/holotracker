@@ -14,7 +14,11 @@ class Member < ApplicationRecord
         belongs = {}
         for member in members do
             if locale == :ja || locale == "ja" then
-                data = {"name" => member.name, "name_url" => member.name_url}
+                data = {
+                    "name" => member.name,
+                    "name_kana" => member.name_kana,
+                    "name_url" => member.name_url
+                }
                 if belongs.has_key?(member.belong) then
                     belongs[member.belong].push(data)
                 else

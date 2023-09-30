@@ -4,7 +4,7 @@
         <details>
             <summary><%= belong %></summary>
             <% members.each do |member| %>
-                <li>
+                <li title="<%= member["name"] %><% if @locale == :ja || @locale == "ja" %>（<%= member["name_kana"] %>）<% end %>">
                     <% if @locale == :ja || @locale == "ja" %>
                         <%= link_to member["name"], "/member/#{member['name_url']}" %>
                     <% else %>
