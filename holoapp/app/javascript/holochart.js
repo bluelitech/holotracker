@@ -23,20 +23,14 @@ function setEvent() {
     $('#latest-data-table tbody tr')
     .on('mousedown', function(e) {
         if (e.button == 1) {
-            window.open(`/member/${$(this).attr('path')}`);
+            window.open(`/member/${$(this).attr('path')}`, '', 'noopener');
         }
-        $(window).on('mousemove',() => {
-            isDragging = true;
-            $(window).unbind("mousemove");
-        });
     })
     .on('mouseup', function(e) {
-        let wasDragging = isDragging;
-        isDragging = false;
-        $(window).unbind("mousemove");
-        if (!wasDragging && e.which == 1) {
+        const text = window.getSelection().toString();
+        if (e.which == 1 && text == "") {
             const lang = location.pathname.replace(/\//g, '');
-            location.href = `/${lang}/member/${$(this).attr('path')}`;
+            location.href = `/${lang}${lang == '' ? '' : '/'}member/${$(this).attr('path')}`;
         }
     });
     $('#latest-data-table .table-body-name-area img').on('click', function(e) {
