@@ -295,6 +295,9 @@ table {
     .section-content {
         align-items: flex-start;
         margin-bottom: 20px;
+        a {
+            word-break: break-all;
+        }
     }
     .section-content-subtitle {
         margin: 1rem 0px;

@@ -97,4 +97,65 @@ en:
         text9: "You can zoom into a selected area on the graph by dragging your cursor within the graph."
         text10: "If you want to reset the view, please press the 🏠 button at the top right of the graph."
   privacy:
-    title: "Privacy policy"
+    title: Privacy Policy
+    header:
+      title: Privacy Policy
+    body:
+      start:
+        title: Introduction
+        text1: This privacy policy (hereinafter referred to as "this policy") sets forth the handling of users' personal information by BlueliTech (hereinafter referred to as "we") in providing the "Holo Tracker (https://trackholo.live)" (hereinafter referred to as "this site").
+      personal:
+        title: Article 1 (Personal Information)
+        text1: We collect the following information on this site.
+        text2: Usage of this site
+        text3: Personal information related to inquiries
+        text4: Usage of this site
+        text5: This includes access information of users.
+        text6: Personal information related to inquiries
+        text7: This includes the user's email address and the content of inquiries.
+      purpose:
+        title: Article 2 (Purpose of Use)
+        text1: We will use the information collected in Article 1 as follows.
+        text2: Usage of this site
+        text3: We use Google's access analysis tool "Google Analytics" for quality improvement on this site.
+        text4: Google Analytics uses cookies to collect data, but this data is collected anonymously and does not identify individuals.
+        text5: You can refuse data collection by disabling cookies, so please check your browser settings.
+        text6: For more details about Google Analytics, please refer to "Google Analytics Service Terms of Use*¹" and Google "Policy and Terms*²" page.
+        text7: https://marketingplatform.google.com/about/analytics/terms/us/
+        text8: https://policies.google.com/technologies/ads?hl=en
+        text9: Personal information related to inquiries
+        text10: We will use it to reply to your inquiries.
+      offer:
+        title: Article 3 (Provision of Personal Information to Third Parties)
+        text1: We manage users' personal information properly and do not provide it to third parties except in the following cases.
+        text2: When the user consents
+        text3: When it is necessary to provide personal information based on laws and regulations
+      ads:
+        title: Article 4 (About Receiving Advertisements)
+        text1: This site places ads provided by Google and Google's partner websites (third-party distribution companies).
+        text2: Ads are delivered based on past access information, including this site, using cookies.
+        text3: Users can disable the use of cookies for personalized ad placement from Google's ad settings page*³.
+        text4: For more detailed information about cookies in Google ads, please refer to Google's policy and terms page*⁴.
+        text5: https://www.google.com/settings/u/0/ads/authenticated
+        text6: https://policies.google.com/technologies/ads?hl=en
+      youtube:
+        title: Article 5 (About Using Youtube Data API)
+        text1: This site uses the YouTube Data API v3 to collect data from YouTube channels specified by us.
+        text2: The YouTube API services are provided under Google's privacy policy and YouTube's terms of use.
+        text3: Please see the YouTube Terms of Service*⁵ and the Google Privacy Policy*⁶ below.
+        text4: https://www.youtube.com/t/terms
+        text5: https://policies.google.com/privacy?hl=ja
+        text6: All users who use this site are considered to have agreed to YouTube's terms of use.
+      log:
+        title: Article 6 (Web Server Recording)
+        text1: The web server of this site automatically collects and records access logs including the user's IP address, but these do not identify the individual user.
+        text2: Users can browse this site anonymously unless they voluntarily disclose personal information.
+      disclaimer:
+        title: Article 7 (Disclaimer)
+        text1: The site administrator is not responsible for any damage suffered by users from viewing this site and referring to its content.
+        text2: Also, the various terms of this site's privacy policy do not apply to the content or services of websites other than this site linked from this site.
+        text3: The site administrator is also not responsible for the content and privacy policy of other websites.
+      history:
+        title: Update History
+        text1: "First posted: August 23, 2020"
+        text2: "Second Edition: October 9, 2023"

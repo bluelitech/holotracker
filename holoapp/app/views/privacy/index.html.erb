@@ -1,9 +1,131 @@
 <% content_for(:title, t('privacy.title')) %>
 <%= render 'shared/header' %>
-<div class="main">
+<div class="main docs-style">
     <div id="main-left" class="main-left">
         <%= render 'shared/sidemenu' %>
     </div>
     <div id="main-right" class="main-right">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-title"><%= t('privacy.header.title') %></div>
+            </div>
+            <div class="section-body">
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.start.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.start.text1') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.personal.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.personal.text1') %></p>
+                        <ul>
+                            <li><%= t('privacy.body.personal.text2') %></li>
+                            <li><%= t('privacy.body.personal.text3') %></li>
+                        </ul>
+                        <b><%= t('privacy.body.personal.text4') %></b>
+                        <p><%= t('privacy.body.personal.text5') %></p>
+                        <b><%= t('privacy.body.personal.text6') %></b>
+                        <p><%= t('privacy.body.personal.text7') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.purpose.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.purpose.text1') %></p>
+                        <b><%= t('privacy.body.purpose.text2') %></b>
+                        <p><%= t('privacy.body.purpose.text3') %></p>
+                        <p><%= t('privacy.body.purpose.text4') %></p>
+                        <p><%= t('privacy.body.purpose.text5') %></p>
+                        <p><%= t('privacy.body.purpose.text6') %></p>
+                        <p>
+                            *¹ <%= link_to t('privacy.body.purpose.text7'), t('privacy.body.ads.text7'), target: :_blank, rel: "noopener noreferrer" %><br>
+                            *² <%= link_to t('privacy.body.purpose.text8'), t('privacy.body.ads.text8'), target: :_blank, rel: "noopener noreferrer" %>
+                        </p>
+                        <b><%= t('privacy.body.purpose.text9') %></b>
+                        <p><%= t('privacy.body.purpose.text10') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.offer.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.offer.text1') %></p>
+                        <ul>
+                            <li><%= t('privacy.body.offer.text2') %></li>
+                            <li><%= t('privacy.body.offer.text3') %></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.ads.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.ads.text1') %></p>
+                        <p><%= t('privacy.body.ads.text2') %></p>
+                        <p><%= t('privacy.body.ads.text3') %></p>
+                        <p><%= t('privacy.body.ads.text4') %></p>
+                        <p>
+                            *³ <%= link_to t('privacy.body.ads.text5'), t('privacy.body.ads.text5'), target: :_blank, rel: "noopener noreferrer" %><br>
+                            *⁴ <%= link_to t('privacy.body.ads.text6'), t('privacy.body.ads.text6'), target: :_blank, rel: "noopener noreferrer" %>
+                        </p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.youtube.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.youtube.text1') %></p>
+                        <p><%= t('privacy.body.youtube.text2') %></p>
+                        <p><%= t('privacy.body.youtube.text3') %></p>
+                        <p>
+                            *⁵ <%= link_to t('privacy.body.youtube.text4'), t('privacy.body.ads.text5'), target: :_blank, rel: "noopener noreferrer" %><br>
+                            *⁶ <%= link_to t('privacy.body.youtube.text5'), t('privacy.body.ads.text6'), target: :_blank, rel: "noopener noreferrer" %>
+                        </p>
+                        <p><%= t('privacy.body.youtube.text6') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.log.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.log.text1') %></p>
+                        <p><%= t('privacy.body.log.text2') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.disclaimer.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('privacy.body.disclaimer.text1') %></p>
+                        <p><%= t('privacy.body.disclaimer.text2') %></p>
+                        <p><%= t('privacy.body.disclaimer.text3') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('privacy.body.history.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p>
+                            <%= t('privacy.body.history.text1') %><br>
+                            <%= t('privacy.body.history.text2') %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

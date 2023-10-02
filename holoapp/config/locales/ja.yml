@@ -98,3 +98,64 @@ ja:
         text10: "元に戻したいときはグラフ右上の🏠を押してください。"
   privacy:
     title: "プライバシーポリシー"
+    header:
+      title: "プライバシーポリシー"
+    body:
+      start:
+        title: "はじめに"
+        text1: "BlueliTech（以下、当方）が提供する「ホロとらっかー（https://trackholo.live）」（以下、「当サイト」）における、ユーザーの個人情報の取り扱いについて、以下の通りプライバシーポリシー（以下、「本ポリシー」）を定めます。"
+      personal:
+        title: "第１条（個人情報）"
+        text1: "当サイトでは以下の情報を取得いたします。"
+        text2: "当サイトの利用状況"
+        text3: "お問い合わせ時に伴う個人情報"
+        text4: "当サイトの利用状況"
+        text5: "ユーザーのアクセス情報などが含まれます。"
+        text6: "お問い合わせ時に伴う個人情報"
+        text7: "ユーザー自身のメールアドレス、お問い合わせ内容などが含まれます。"
+      purpose:
+        title: "第２条（利用目的）"
+        text1: "当方は第１条において収集した情報は下記の通り利用いたします。"
+        text2: "当サイトの利用状況"
+        text3: "当サイトでは品質向上のためにGoogleによるアクセス解析ツール「Googleアナリティクス」を使用しています。"
+        text4: "Googleアナリティクスはデータの収集のためにCookieを使用していますが、このデータは匿名で収集されており個人を特定するものではありません。"
+        text5: "この機能はCookieを無効にすることで収集を拒否することが出来ますので、お使いのブラウザの設定をご確認ください。"
+        text6: "Googleアナリティクスに関する詳細は「Googleアナリティクスサービス利用規約*¹」やGoogleの「ポリシーと規約*²」ページをご覧ください。"
+        text7: "https://marketingplatform.google.com/about/analytics/terms/jp/"
+        text8: "https://policies.google.com/technologies/ads?hl=ja"
+        text9: "お問い合わせ時に伴う個人情報"
+        text10: "お問い合わせに対する返信のために利用いたします。"
+      offer:
+        title: "第３条（個人情報の第三者提供）"
+        text1: "当方は、ユーザーの個人情報を適切に管理し、次のいずれかに該当する場合を除いて当方から第三者へ提供する事はありません。"
+        text2: "ユーザーの同意がある場合"
+        text3: "法令に基づいて個人情報を提供することが必要である場合"
+      ads:
+        title: "第４条（広告の配信について）"
+        text1: "当サイトはGoogle及びGoogleのパートナーウェブサイト（第三者配信事業者）の提供する広告を設置しております。"
+        text2: "広告配信にはCookieを使用し、当サイトを含めた過去のアクセス情報に基づいて広告を配信します。"
+        text3: "ユーザーはGoogleアカウントの広告設定ページ*³から、パーソナライズ広告の掲載に使用されるCookieを無効にできます。"
+        text4: "その他、Googleの広告におけるCookieの取り扱いについての詳細は、Googleのポリシーと規約ページ*⁴をご覧ください。"
+        text5: "https://www.google.com/settings/u/0/ads/authenticated"
+        text6: "https://www.google.co.jp/policies/technologies/ads/"
+      youtube:
+        title: "第５条（Youtube Data APIの利用について）"
+        text1: "当サイトでは当方が指定したYoutubeチャンネルのデータ取得のためにYouTube Data API v3を利用しています。"
+        text2: "YouTube APIサービスは、Google社のプライバシーポリシー、YouTubeの利用規約に基づいて提供されています。"
+        text3: "YouTubeの利用規約*⁵、Googleプライバシーポリシー*⁶については以下をご覧ください。"
+        text4: "https://www.youtube.com/t/terms"
+        text5: "https://policies.google.com/privacy?hl=ja"
+        text6: "当サイトを利用するすべてのユーザーはYouTubeの利用規約に同意したものとみなします。"
+      log:
+        title: "第６条（Webサーバーの記録）"
+        text1: "当サイトのWebサーバーはユーザーのIPアドレスを含むアクセスログを自動的に収集・記録しますが、これらは利用者個人を特定するものではありません。"
+        text2: "ユーザーは自ら個人情報を開示しない限り匿名のままで当サイトを自由に閲覧する事ができます。"
+      disclaimer:
+        title: "第７条（免責事項）"
+        text1: "ユーザーは当サイトを閲覧し、その内容を参照した事によって何かしらの損害を被った場合でも当サイトの管理者は一切責任を負いません。"
+        text2: "また、当サイトからリンクされた当サイト以外のWebサイトの内容やサービスに関して、当サイトのプライバシーポリシーについての諸条件は適用されません。"
+        text3: "当サイト以外のWebサイトの内容及びプライバシーポリシーの内容に関しても当サイト管理者は責任を負いません。"
+      history:
+        title: "更新履歴"
+        text1: "初出掲載：2020年8月23日"
+        text2: "第二版：2023年10月9日"
