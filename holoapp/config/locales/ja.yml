@@ -3,6 +3,7 @@ ja:
     header:
       title: "ホロとらっかー"
   top:
+    title: "ホロライブのチャンネル登録者数の遷移と一覧"
     chart:
       title: "ホロライブチャンネル登録者数遷移"
     data:
@@ -48,3 +49,17 @@ ja:
           datetime: "達成日時"
           subscriber: "登録者数"
           diff: "経過日数"
+  sidemenu:
+    separator:
+      link: "ページ"
+      member: "メンバー"
+    link:
+      million: "ミリオン予測"
+      about: "このサイトについて"
+      privacy: "プライバシーポリシー"
+  million:
+    title: "ミリオン予測"
+  about:
+    title: "このサイトについて"
+  privacy:
+    title: "プライバシーポリシー"

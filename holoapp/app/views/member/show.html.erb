@@ -1,3 +1,8 @@
+<% if @locale == :ja || @locale == "ja" %>
+    <% content_for(:title, @member.name) %>
+<% else %>
+    <% content_for(:title, @member.name_en) %>
+<% end %>
 <%= render 'shared/header' %>
 <div class="main">
     <div id="main-left" class="main-left">

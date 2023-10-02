@@ -1,5 +1,27 @@
 <ul id="sidemenu" class="sidemenu">
-    <% logger.debug @locale.inspect %>
+    <div class="sidemenu-separator"><%= t('sidemenu.separator.link') %></div>
+    <li>
+        <% if @locale == :ja || @locale == "ja" %>
+            <%= link_to t('sidemenu.link.million'), "/million" %>
+        <% else %>
+            <%= link_to t('sidemenu.link.million'), "/en/million" %>
+        <% end %>
+    </li>
+    <li>
+        <% if @locale == :ja || @locale == "ja" %>
+            <%= link_to t('sidemenu.link.about'), "/about" %>
+        <% else %>
+            <%= link_to t('sidemenu.link.about'), "/en/about" %>
+        <% end %>
+    </li>
+    <li>
+        <% if @locale == :ja || @locale == "ja" %>
+            <%= link_to t('sidemenu.link.privacy'), "/privacy" %>
+        <% else %>
+            <%= link_to t('sidemenu.link.privacy'), "/en/privacy" %>
+        <% end %>
+    </li>
+    <div class="sidemenu-separator"><%= t('sidemenu.separator.member') %></div>
     <% @belongs.each do |belong, members| %>
         <details>
             <summary><%= belong %></summary>

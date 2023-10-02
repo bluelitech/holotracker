@@ -3,6 +3,7 @@ en:
     header:
       title: "HoloTracker"
   top:
+    title: "Transition and List of Subscribers to the Hololive Channel"
     chart:
       title: "Transition of Subscribers to the Hololive Channel"
     data:
@@ -48,3 +49,17 @@ en:
           datetime: "Datetime"
           subscriber: "Subscribers"
           diff: "Days elapsed"
+  sidemenu:
+    separator:
+      link: "Link"
+      member: "Member"
+    link:
+      million: "Million forecast"
+      about: "About this site"
+      privacy: "Privacy policy"
+  million:
+    title: "Million forecast"
+  about:
+    title: "About this site"
+  privacy:
+    title: "Privacy policy"

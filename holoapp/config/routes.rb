@@ -8,6 +8,9 @@ Rails.application.routes.draw do
     get '/member/:name/subscriber_24hours', to: 'member#subscriber_24hours'
     get '/member/:name/subscriber_14days', to: 'member#subscriber_14days'
     get '/member/:name/round', to: 'member#round'
+    get '/million', to: 'million#index'
+    get '/about', to: 'about#index'
+    get '/privacy', to: 'privacy#index'
     match '*path' => 'application#render_404', via: :all
   end
 end
