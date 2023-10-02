@@ -210,6 +210,9 @@ table {
         }
     }
     &-right {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         position: absolute;
         overflow: auto;
         height: calc(100% - 65px);
@@ -226,14 +229,14 @@ table {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 40px;
+    width: 100%;
 
     &-header {
         display: flex;
         flex-direction: column;
         align-items: center;
         width: 100%;
-        margin-bottom: 50px;
+        margin: 50px 0px;
         padding: 20px 0px;
         &-title {
             font-size: 2rem;
@@ -271,6 +274,35 @@ table {
         &.round-table {
             max-width: 800px;
         }
+    }
+}
+.docs-style {
+    .main-right {
+        background-color: $whitesmoke;
+    }
+    .section {
+        max-width: 800px;
+        background-color: $white;
+        box-shadow: 0px 0px 10px 5px rgba($black, 0.2);
+    }
+    .section-header {
+        margin: 50px 0px 30px;
+    }
+    .section-body {
+        padding: 0px 2rem;
+        margin-bottom: 50px;
+    }
+    .section-content {
+        align-items: flex-start;
+        margin-bottom: 20px;
+    }
+    .section-content-subtitle {
+        margin: 1rem 0px;
+        padding: 3px 10px;
+        width: 100%;
+        background-color: $whitesmoke;
+        border-left: 5px solid $blue;
+        border-bottom: 3px solid $border;
     }
 }
 

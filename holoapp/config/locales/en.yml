@@ -61,5 +61,40 @@ en:
     title: "Million forecast"
   about:
     title: "About this site"
+    header:
+      title: "About this site"
+    body:
+      fan:
+        title: "Introduction"
+        text1: '"Holotracker" is an unofficial fan site developed and operated by an individual.'
+        text2: "Please refrain from directing enquiries or questions regarding our site to Cover Corporation and its affiliates."
+        text3: 'Also, please note in advance that all data published on "Holotracker" does not guarantee accurate values.'
+      get:
+        title: "Method of Acquiring Subscriber Counts"
+        text1: "The subscriber count of a channel is obtained by using the YouTube Data API v3, where data is collected at regular intervals and the daily changes are displayed as the difference between the latest acquisition time and the subscriber count 24 hours prior."
+        text2: "The frequency of data collection changes depending on the situation, but the basic interval is once every 10 minutes."
+        text3: "Please note that due to the API specifications, the channel subscriber count is only reflected when there are increases or decreases by units of 1,000 for counts under 1 million subscribers, and by units of 10,000 for counts over 1 million subscribers."
+        text4: "As a result, even if the actual number of subscribers has increased, it is counted as 0 unless the increase exceeds 1,000 (or 10,000) subscribers."
+      transition:
+        title: "Channel Subscription Transition"
+        text1: "Please note that data collection started on August 16, 2020, so the number of channel subscribers before August 15, 2020, may significantly differ from the actual value."
+        text2: "Your understanding is appreciated."
+      distribution:
+        title: "Regarding the Distribution of Channel Subscriber Count Data"
+        text1: "We have started paid distribution of the data we actually use in the Holo Tracker."
+        text2: "Please check the details on BOOTH."
+        text3: "https://bluelitech.booth.pm/items/4970768"
+      graph:
+        title: "About Graph Manipulation"
+        text1: "Highlight"
+        text2: "When you hover over the name of a Hololive member under the graph, that member will be highlighted on the graph."
+        text3: "Toggling Visibility"
+        text4: "By clicking on the name of a Hololive member, you can toggle their visibility on the graph."
+        text5: 'You can also hide all Hololive members from the graph by pressing the "Hide All" button under the name.'
+        text6: "This feature is useful when you want to narrow down the number of displayed members for comparison purposes."
+        text7: "※Each time you press the button, the visibility will be toggled."
+        text8: "Graph Zoom"
+        text9: "You can zoom into a selected area on the graph by dragging your cursor within the graph."
+        text10: "If you want to reset the view, please press the 🏠 button at the top right of the graph."
   privacy:
     title: "Privacy policy"

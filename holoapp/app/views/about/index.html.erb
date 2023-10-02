@@ -1,9 +1,81 @@
 <% content_for(:title, t('about.title')) %>
 <%= render 'shared/header' %>
-<div class="main">
+<div class="main docs-style">
     <div id="main-left" class="main-left">
         <%= render 'shared/sidemenu' %>
     </div>
     <div id="main-right" class="main-right">
+        <div class="section">
+            <div class="section-header">
+                <div class="section-header-title"><%= t('about.header.title') %></div>
+            </div>
+            <div class="section-body">
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('about.body.fan.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p>
+                            <%= t('about.body.fan.text1') %><br>
+                            <%= t('about.body.fan.text2') %>
+                        </p>
+                        <p><%= t('about.body.fan.text3') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('about.body.get.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('about.body.get.text1') %></p>
+                        <p><%= t('about.body.get.text2') %></p>
+                        <p><%= t('about.body.get.text3') %></p>
+                        <p><%= t('about.body.get.text4') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('about.body.transition.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('about.body.transition.text1') %></p>
+                        <p><%= t('about.body.transition.text2') %></p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('about.body.distribution.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <p><%= t('about.body.distribution.text1') %></p>
+                        <p>
+                            <%= t('about.body.distribution.text2') %><br>
+                            <%= link_to t('about.body.distribution.text3'), t('about.body.distribution.text3'), target: :_blank, rel: "noopener noreferrer" %>
+                        </p>
+                    </div>
+                </div>
+                <div class="section-content">
+                    <div class="section-content-subtitle">
+                        <%= t('about.body.graph.title') %>
+                    </div>
+                    <div class="section-content-body">
+                        <b><%= t('about.body.graph.text1') %></b>
+                        <p><%= t('about.body.graph.text2') %></p>
+                        <b><%= t('about.body.graph.text3') %></b>
+                        <p><%= t('about.body.graph.text4') %></p>
+                        <p><%= t('about.body.graph.text5') %></p>
+                        <p>
+                            <%= t('about.body.graph.text6') %><br>
+                            <%= t('about.body.graph.text7') %>
+                        </p>
+                        <b><%= t('about.body.graph.text8') %></b>
+                        <p>
+                            <%= t('about.body.graph.text9') %><br>
+                            <%= t('about.body.graph.text10') %>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
