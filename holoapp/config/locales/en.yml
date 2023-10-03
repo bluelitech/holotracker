@@ -65,10 +65,10 @@ en:
       title: "About this site"
     body:
       fan:
-        title: "Introduction"
-        text1: '"Holotracker" is an unofficial fan site developed and operated by an individual.'
-        text2: "Please refrain from directing enquiries or questions regarding our site to Cover Corporation and its affiliates."
-        text3: 'Also, please note in advance that all data published on "Holotracker" does not guarantee accurate values.'
+        title: Introduction
+        text1: '"HoroTracker (hereinafter, "the Site")" is an unofficial fan site developed and operated by an individual.'
+        text2: Please refrain from making any inquiries or complaints related to our site to Cover Corporation and its affiliated companies.
+        text3: Furthermore, please understand in advance that all data published on our site do not guarantee accurate values.
       get:
         title: "Method of Acquiring Subscriber Counts"
         text1: "The subscriber count of a channel is obtained by using the YouTube Data API v3, where data is collected at regular intervals and the daily changes are displayed as the difference between the latest acquisition time and the subscriber count 24 hours prior."
@@ -96,6 +96,35 @@ en:
         text8: "Graph Zoom"
         text9: "You can zoom into a selected area on the graph by dragging your cursor within the graph."
         text10: "If you want to reset the view, please press the 🏠 button at the top right of the graph."
+      stop:
+        title: About the Operation of Our Site
+        text1: "We reserve the right to suspend or halt the provision of all or part of our site without prior notice to users if we deem that any of the following circumstances apply:"
+        text2: If a significant bug is found on our site
+        text3: In other circumstances, when we find it difficult to operate the site
+        text4: We will not assume any responsibility for any disadvantage or damage suffered by users or third parties due to the suspension or interruption of the offering of our site.
+      ban:
+        title: Prohibited Actions
+        text1: "Users are prohibited from engaging in the following actions in relation to the use of our service:"
+        text2: Actions that violate laws, ordinances, or public order and morals
+        text3: Actions related to criminal activity
+        text4: Actions that infringe on the copyright and other intellectual property rights included in our service, such as its functions
+        text5: Actions that damage or interfere with our or any third party's server or network functions
+        text6: Actions that may hinder the operation of our service
+        text7: Executing or attempting to execute unauthorized access
+        text8: Actions that provide direct or indirect benefits to antisocial forces in connection with our service
+        text9: Actions that collect data from this site using automated means such as programs
+        text10: Other actions that we deem inappropriate
+        text11: Using data obtained from our site through regular browser operations, while clearly stating that it is data from our site, does not constitute a prohibited action.
+        text12: "Examples that are OK:"
+        text13: Posting data or screenshots obtained from our site on social media or video sites
+        text14: Copying data from our site through regular browser operations and analyzing it in Excel, etc.
+        text15: There is basically no problem as long as the usage is within the scope of common sense.
+      disclaimer:
+        title: Disclaimer and Denial of Warranty
+        text1: We do not explicitly nor implicitly warrant that this site is free from factual or legal defects (including flaws, errors, or bugs related to safety, reliability, accuracy, completeness, efficacy), or infringement of rights.
+        text2: We reserve the right to change the specifications of this service at our discretion.
+        text3: We accept no responsibility for any damage caused to users by this service, except in cases of our intentional or gross negligence.
+        text4: We bear no responsibility for any transactions, communication, or disputes that occur between users and other users or third parties in relation to this service.
   privacy:
     title: Privacy Policy
     header:
@@ -155,6 +184,12 @@ en:
         text1: The site administrator is not responsible for any damage suffered by users from viewing this site and referring to its content.
         text2: Also, the various terms of this site's privacy policy do not apply to the content or services of websites other than this site linked from this site.
         text3: The site administrator is also not responsible for the content and privacy policy of other websites.
+      contact:
+        title: "Inquiries"
+        text1: "This site is independently developed by "
+        text2: "@fulutori_aonos"
+        text3: "."
+        text4: "If you have any questions or concerns, please contact us here."
       history:
         title: Update History
         text1: "First posted: August 23, 2020"

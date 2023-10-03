@@ -33,6 +33,6 @@ class Member < ApplicationRecord
                 end
             end
         end
-        p belongs
+        return belongs
     end
 end
