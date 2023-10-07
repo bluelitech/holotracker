@@ -60,4 +60,26 @@ function setEvent() {
             }
         }
     });
+    let appear = false;
+    $('#main-right').on('scroll', function () {
+        if ($(this).scrollTop() > 100) {
+            if (appear == false) {
+                appear = true;
+                $('#page_top').stop().animate({
+                    'bottom': '10px'
+                }, 300);
+            }
+        } else {
+            if (appear) {
+                appear = false;
+                $('#page_top').stop().animate({
+                    'bottom': '-80px'
+                }, 100);
+            }
+        }
+    });
+    $('#page_top').on('click', function () {
+        $('#main-right').animate({ scrollTop: 0 }, 300);
+        return false;
+    });
 }

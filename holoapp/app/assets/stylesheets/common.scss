@@ -429,6 +429,10 @@ table {
         height: 1.1rem;
         margin-bottom: 4px;
     }
+    &-pagetop {
+        width: 2rem;
+        height: 2rem;
+    }
 }
 .footer {
     width: 100%;
@@ -442,4 +446,15 @@ table {
         font-size: 0.9rem;
         color: $white;
     }
+}
+#page_top{
+    position: fixed;
+    right: 15px;
+    bottom: -80px;
+    z-index: 99;
+    border-radius: 50%;
+    border: 5px solid $blue;
+    padding: 10px;
+    background-color: rgba($white, 0.5);
+    cursor: pointer;
 }
