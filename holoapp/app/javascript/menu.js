@@ -59,6 +59,11 @@ function setEvent() {
                 languageElem.hide();
             }
         }
+        if (!$(e.target).closest('#header-left').length) {
+            $('#main-left').hide();
+            $('#main-right').removeClass('withmenu');
+            $('#header-menu-btn').removeClass('on')
+        }
     });
     let appear = false;
     $('#main-right').on('scroll', function () {
