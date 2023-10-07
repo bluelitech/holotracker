@@ -5,5 +5,124 @@
         <%= render 'shared/sidemenu' %>
     </div>
     <div id="main-right" class="main-right">
+        <div id="section-description" class="section">
+            <div class="section-header">
+                <div class="section-header-title"><%= t('million.header.title') %></div>
+            </div>
+            <div class="section-body">
+                <div class="section-content">
+                    <div class="table-wrapper">
+                        <table id="million-table" class="table round">
+                            <thead>
+                                <tr>
+                                    <th><%= t('million.body.table.header.name') %></th>
+                                    <th><%= t('million.body.table.header.subscriber') %></th>
+                                    <th><%= t('million.body.table.header.million') %></th>
+                                    <th><%= t('million.body.table.header.forecast') %></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tbody>
+                                <% @members.zip(@forecasts).each do |member, forecast| %>
+                                    <tr>
+                                        <td><% if @locale == 'en' %><%= member.name_en %><% else %><%= member.name %><% end %></td>
+                                        <td><%= number_with_delimiter(forecast['subscriber']) %></td>
+                                        <td>
+                                            <% if forecast['result'] == 'unforeseeable' %>
+                                                <%= t('million.body.table.forecasts.unforeseeable') %>
+                                            <% elsif forecast['result'] == 'shortage' %>
+                                                <%= t('million.body.table.forecasts.shortage') %>
+                                            <% else %>
+                                                <%= number_with_delimiter(forecast['forecast_subscriber']) %>
+                                            <% end %>
+                                            <img
+                                                class="icon-forecasts"
+                                                <% if forecast['result'] == 'success' %>
+                                                    src="/assets/forecasts_success.svg"
+                                                    title="<%= t('million.body.table.forecasts.success') %>"
+                                                <% elsif forecast['result'] == 'unreachable' %>
+                                                    src="/assets/forecasts_unreachable.svg"
+                                                    title="<%= t('million.body.table.forecasts.unreachable') %>"
+                                                <% elsif forecast['result'] == 'unforeseeable' %>
+                                                    src="/assets/forecasts_unforeseeable.svg"
+                                                    title="<%= t('million.body.table.forecasts.unforeseeable') %>"
+                                                <% elsif forecast['result'] == 'shortage' %>
+                                                    src="/assets/forecasts_shortage.svg"
+                                                    title="<%= t('million.body.table.forecasts.shortage') %>"
+                                                <% end %>
+                                            />
+                                        </td>
+                                        <td><%= forecast['date'] %></td>
+                                    </tr>
+                                <% end %>
+                                </tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="section-description" class="section">
+            <div class="section-header bg-blue">
+                <div class="section-header-title"><%= t('million.body.description.title') %></div>
+            </div>
+            <div class="section-body description">
+                <div class="section-content">
+                    <div class="section-content-body">
+                        <b><%= t('million.body.description.body.text1') %></b>
+                        <p><%= t('million.body.description.body.text2') %></p>
+                        <p><%= t('million.body.description.body.text3') %></p>
+                        <b><%= t('million.body.description.body.text4') %></b>
+                        <p><%= t('million.body.description.body.text5') %></p>
+                        <b><%= t('million.body.description.body.text6') %></b>
+                        <table>
+                            <tbody>
+                                <tr>
+                                    <td class="description-key <% if @locale == "en"%>keywide<% end %>">
+                                        <img class="icon-forecasts" src="/assets/forecasts_success.svg" />
+                                        <%= t('million.body.description.body.text7') %>
+                                    </td>
+                                    <td>
+                                        <%= t('million.body.description.body.text8') %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="description-key <% if @locale == "en"%>keywide<% end %>">
+                                        <img class="icon-forecasts" src="/assets/forecasts_unreachable.svg" />
+                                        <%= t('million.body.description.body.text9') %>
+                                    </td>
+                                    <td>
+                                        <%= t('million.body.description.body.text10') %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="description-key <% if @locale == "en"%>keywide<% end %>">
+                                        <img class="icon-forecasts" src="/assets/forecasts_unforeseeable.svg" />
+                                        <%= t('million.body.description.body.text11') %>
+                                    </td>
+                                    <td>
+                                        <%= t('million.body.description.body.text12') %>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td class="description-key <% if @locale == "en"%>keywide<% end %>">
+                                        <img class="icon-forecasts" src="/assets/forecasts_shortage.svg" />
+                                        <%= t('million.body.description.body.text13') %>
+                                    </td>
+                                    <td>
+                                        <%= t('million.body.description.body.text14') %>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <b><%= t('million.body.description.body.text15') %></b>
+                        <p><%= t('million.body.description.body.text16') %></p>
+                        <p><%= t('million.body.description.body.text17') %></p>
+                        <p><%= t('million.body.description.body.text18') %></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <%= render 'shared/footer' %>
     </div>
 </div>

@@ -59,6 +59,41 @@ en:
       privacy: "Privacy policy"
   million:
     title: "Million forecast"
+    header:
+      title: "Million forecast"
+    body:
+      table:
+        header:
+          name: "Name"
+          subscriber: "Subscriber"
+          million: "Million"
+          forecast: "Forecast"
+        forecasts:
+          success: "Million Forecast"
+          unreachable: "Round Forecast"
+          unforeseeable: "Forecast failure"
+          shortage: "Insufficient Data"
+      description:
+        title: "About the forecast method"
+        body:
+          text1: Target data for analysis
+          text2: Around the debut date of members, the increase in the number of channel subscribers is notable, while on the other hand, it can significantly decrease due to account bans by YouTube.
+          text3: Such data can greatly impact the forecast, so we only target the number of channel subscribers one month after the debut of the members.
+          text4: Forecast method
+          text5: We use the Autoregressive Integrated Moving Average model (ARIMA) to predict the transition of the number of channel subscribers over the next three years.
+          text6: Forecast results
+          text7: Million forecast
+          text8: We were able to predict the next million (in units of 1 million) for the members.
+          text9: Round forecast
+          text10: Although we were unable to predict the next million for the members, we were able to predict the rounded number (in units of 100,000).
+          text11: Forecast failure
+          text12: Failed on both the million forecast and the rounded number forecast.
+          text13: Insufficient data
+          text14: There is insufficient data to analyze, such as immediately after debut.
+          text15: Notes
+          text16: Please note that the dates that are calculated as the anticipated achievement dates are merely forecasts, and the actual achievement dates may vary*¹.
+          text17: The number of channel subscribers is updated approximately every 10 minutes, but it takes time to reflect this because the million forecast recalculates the anticipated achievement date and time only once a day.
+          text18: "*¹: Because members often do endurance streaming around milestones in the number of channel subscribers (generally in units of 100,000), they tend to achieve these earlier than the predicted achievement dates."
   about:
     title: "About this site"
     header:

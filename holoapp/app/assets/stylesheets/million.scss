@@ -1,0 +1,26 @@
+.description {
+    max-width: 850px;
+    padding: 20px;
+    margin-bottom: 50px;
+    table {
+        margin: 10px 0px 20px;
+        tbody {
+            border-top: 1px solid $border;
+        }
+        td {
+            border-top: none;
+            border-bottom: 1px solid $border;
+            padding: 10px 5px;
+        }
+        td.description-key {
+            min-width: 150px;
+            width: 150px;
+            &.keywide {
+                width: 180px;
+            }
+        }
+    }
+}
+#section-description table tbody {
+    border-bottom: 1px solid $border;
+}

@@ -355,11 +355,6 @@ table {
         margin-left: 5px;
         border: 1px solid $border;
     }
-    &-graduation-icon {
-        margin-left: 5px;
-        width: 1.1rem;
-        height: 1.1rem;
-    }
 }
 .table-wrapper {
     white-space: nowrap;
@@ -426,5 +421,18 @@ table {
     }
     .wide {
         display: none;
+    }
+}
+.icon {
+    &-graduation {
+        margin-left: 5px;
+        width: 1.1rem;
+        height: 1.1rem;
+    }
+    &-forecasts {
+        margin-left: 5px;
+        width: 1.1rem;
+        height: 1.1rem;
+        margin-bottom: 4px;
     }
 }
