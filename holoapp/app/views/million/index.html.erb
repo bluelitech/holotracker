@@ -12,22 +12,25 @@
             <div class="section-body">
                 <div class="section-content">
                     <div class="table-wrapper">
-                        <table id="million-table" class="table round">
+                        <table id="million-table" class="table">
                             <thead>
-                                <tr>
-                                    <th><%= t('million.body.table.header.name') %></th>
-                                    <th><%= t('million.body.table.header.subscriber') %></th>
-                                    <th><%= t('million.body.table.header.million') %></th>
-                                    <th><%= t('million.body.table.header.forecast') %></th>
+                                <tr class="pointer">
+                                    <th class="sort" data-sort="name"><%= t('million.body.table.header.name') %></th>
+                                    <th class="sort" data-sort="subscriber"><%= t('million.body.table.header.subscriber') %></th>
+                                    <th class="sort" data-sort="million"><%= t('million.body.table.header.million') %></th>
+                                    <th class="sort" data-sort="forecast"><%= t('million.body.table.header.forecast') %></th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tbody>
+                            <tbody class="list">
                                 <% @members.zip(@forecasts).each do |member, forecast| %>
                                     <tr>
-                                        <td><% if @locale == 'en' %><%= member.name_en %><% else %><%= member.name %><% end %></td>
-                                        <td><%= number_with_delimiter(forecast['subscriber']) %></td>
+                                        <td class="name"><% if @locale == 'en' %><%= member.name_en %><% else %><%= member.name %><% end %></td>
                                         <td>
+                                            <span class="subscriber hidden"><%= forecast['subscriber'] %></span>
+                                            <%= number_with_delimiter(forecast['subscriber']) %>
+                                        </td>
+                                        <td>
+                                            <span class="million hidden"><%= forecast['forecast_subscriber'] %></span>
                                             <% if forecast['result'] == 'unforeseeable' %>
                                                 <%= t('million.body.table.forecasts.unforeseeable') %>
                                             <% elsif forecast['result'] == 'shortage' %>
@@ -52,10 +55,9 @@
                                                 <% end %>
                                             />
                                         </td>
-                                        <td><%= forecast['date'] %></td>
+                                        <td class="forecast"><%= forecast['date'] %></td>
                                     </tr>
                                 <% end %>
-                                </tbody>
                             </tbody>
                         </table>
                     </div>
@@ -126,3 +128,4 @@
         <%= render 'shared/footer' %>
     </div>
 </div>
+<%= javascript_include_tag "million.js" %>

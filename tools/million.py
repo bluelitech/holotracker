@@ -155,9 +155,10 @@ def forecasts(member_id, df, subscriber_max):
     for day, subscriber in zip(pd.date_range(start=df.index[-1], periods=len(pred)+1)[1:], pred):
         check = (subscriber // 10000) * 10000
         if check != target and check % 100000 == 0:
+            if target != 0:
+                forecast_day.append(day)
+                forecast_subscriber.append(check)
             target = check
-            forecast_day.append(day)
-            forecast_subscriber.append(check)
         if check >= next_million:
             break
 
