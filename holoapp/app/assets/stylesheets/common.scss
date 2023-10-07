@@ -436,3 +436,16 @@ table {
         margin-bottom: 4px;
     }
 }
+.footer {
+    width: 100%;
+    padding: 10px;
+    background-color: $blue;
+    &-text {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 0.9rem;
+        font-size: 0.9rem;
+        color: $white;
+    }
+}
