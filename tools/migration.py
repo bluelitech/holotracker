@@ -24,6 +24,7 @@ def get_csv(filename):
     rows (list)          : CSVから取得した過去データ
     """
     rows = []
+    delete_rows = []
     dt = datetime.now(timezone.utc).strftime('%Y-%m-%d %H:%M:%S')
     member_dic = get_member_dict()
     with open(filename, encoding='utf8') as f:
@@ -42,9 +43,12 @@ def get_csv(filename):
                 name = '森カリオペ'
             elif name == 'アイリス':
                 name = 'IRyS'
+            elif name == '古石ビジュ―':
+                name = '古石ビジュー'
             member_id = member_dic[name]
             subscriber = row[2]
-            rows.append([member_id,utc_dt,subscriber,0,0,dt,dt])
+            rows.append([member_id,utc_dt,subscriber,row[3],row[4],dt,dt])
+            # delete_rows.append([member_id, utc_dt, subscriber])
     return rows
 
 
@@ -66,8 +70,13 @@ def insert_data(datas):
     cursor.executemany(sql, datas)
     conn.commit()
 
+def delete_data(datas):
+    sql = 'DELETE FROM trackers WHERE member_id=? AND datetime=? AND subscriber=?'
+    cursor.executemany(sql, datas)
+    conn.commit()
 
 if __name__ == '__main__':
     args = parser.parse_args()
     datas = get_csv(args.file)
     insert_data(datas)
+    # delete_data(datas)
