@@ -59,7 +59,7 @@ function setMenuEvent() {
                 languageElem.hide();
             }
         }
-        if (!$(e.target).closest('#header-left').length) {
+        if (!$(e.target).closest('#header-left, #main-left').length) {
             $('#main-left').hide();
             $('#main-right').removeClass('withmenu');
             $('#header-menu-btn').removeClass('on')
