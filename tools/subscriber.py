@@ -67,23 +67,27 @@ def get_round_dict():
     diff = 0
     for data in result:
         utc_dt = datetime.strptime(data[0], '%Y-%m-%d %H:%M:%S')
-        jst_dt = utc_dt.astimezone(timezone(timedelta(hours=18))).strftime('%Y-%m-%d %H:%M')
+        jst_dt = utc_dt.astimezone(timezone(timedelta(hours=18)))
+        jst_str = jst_dt.strftime('%Y-%m-%d %H:%M')
         member_id = data[1]
         subscriber = data[2]
 
         if member_id in round_dict:
             last_data = round_dict[member_id]['rounds'][-1]
             diff = subscriber - last_data['subscriber']
-            round_data = {'datetime': jst_dt, 'subscriber': subscriber, 'diff': diff}
+            round_data = {'datetime': jst_str, 'subscriber': subscriber, 'diff': diff}
 
             # latestに設定済みの登録者数よりも大きければ更新
             if subscriber > round_dict[member_id]['latest']['subscriber']:
+                round_dict[member_id]['latest'] = round_data
+            elif subscriber == round_dict[member_id]['latest']['subscriber']\
+                and jst_dt < datetime.strptime(round_dict[member_id]['latest']['datetime'], '%Y-%m-%d %H:%M').astimezone(timezone(timedelta(hours=18))):
                 round_dict[member_id]['latest'] = round_data
 
             # キリ番を追加
             round_dict[member_id]['rounds'].append(round_data)
         else:
-            round_data = {'datetime': jst_dt, 'subscriber': subscriber, 'diff': 0}
+            round_data = {'datetime': jst_str, 'subscriber': subscriber, 'diff': 0}
             round_dict[member_id] = {
                 'latest': round_data,
                 'rounds': [round_data]
