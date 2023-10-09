@@ -38,22 +38,15 @@
                                             <% else %>
                                                 <%= number_with_delimiter(forecast['forecast_subscriber']) %>
                                             <% end %>
-                                            <img
-                                                class="icon-forecasts"
-                                                <% if forecast['result'] == 'success' %>
-                                                    src="/assets/forecasts_success.svg"
-                                                    title="<%= t('million.body.table.forecasts.success') %>"
-                                                <% elsif forecast['result'] == 'unreachable' %>
-                                                    src="/assets/forecasts_unreachable.svg"
-                                                    title="<%= t('million.body.table.forecasts.unreachable') %>"
-                                                <% elsif forecast['result'] == 'unforeseeable' %>
-                                                    src="/assets/forecasts_unforeseeable.svg"
-                                                    title="<%= t('million.body.table.forecasts.unforeseeable') %>"
-                                                <% elsif forecast['result'] == 'shortage' %>
-                                                    src="/assets/forecasts_shortage.svg"
-                                                    title="<%= t('million.body.table.forecasts.shortage') %>"
-                                                <% end %>
-                                            />
+                                            <% if forecast['result'] == 'success' %>
+                                                <%= image_tag "forecasts_success.svg", class: "icon-forecasts", title: t('million.body.table.forecasts.success') %>
+                                            <% elsif forecast['result'] == 'unreachable' %>
+                                                <%= image_tag "forecasts_unreachable.svg", class: "icon-forecasts", title: t('million.body.table.forecasts.unreachable') %>
+                                            <% elsif forecast['result'] == 'unforeseeable' %>
+                                                <%= image_tag "forecasts_unforeseeable.svg", class: "icon-forecasts", title: t('million.body.table.forecasts.unforeseeable') %>
+                                            <% elsif forecast['result'] == 'shortage' %>
+                                                <%= image_tag "forecasts_shortage.svg", class: "icon-forecasts", title: t('million.body.table.forecasts.shortage') %>
+                                            <% end %>
                                         </td>
                                         <td class="forecast"><%= forecast['date'] %></td>
                                     </tr>
@@ -81,7 +74,7 @@
                             <tbody>
                                 <tr>
                                     <td class="description-key <% if @locale == "en"%>keywide<% end %>">
-                                        <img class="icon-forecasts" src="/assets/forecasts_success.svg" />
+                                        <%= image_tag "forecasts_success.svg", class: "icon-forecasts" %>
                                         <%= t('million.body.description.body.text7') %>
                                     </td>
                                     <td>
@@ -90,7 +83,7 @@
                                 </tr>
                                 <tr>
                                     <td class="description-key <% if @locale == "en"%>keywide<% end %>">
-                                        <img class="icon-forecasts" src="/assets/forecasts_unreachable.svg" />
+                                        <%= image_tag "forecasts_unreachable.svg", class: "icon-forecasts" %>
                                         <%= t('million.body.description.body.text9') %>
                                     </td>
                                     <td>
@@ -99,7 +92,7 @@
                                 </tr>
                                 <tr>
                                     <td class="description-key <% if @locale == "en"%>keywide<% end %>">
-                                        <img class="icon-forecasts" src="/assets/forecasts_unforeseeable.svg" />
+                                        <%= image_tag "forecasts_unforeseeable.svg", class: "icon-forecasts" %>
                                         <%= t('million.body.description.body.text11') %>
                                     </td>
                                     <td>
@@ -108,7 +101,7 @@
                                 </tr>
                                 <tr>
                                     <td class="description-key <% if @locale == "en"%>keywide<% end %>">
-                                        <img class="icon-forecasts" src="/assets/forecasts_shortage.svg" />
+                                        <%= image_tag "forecasts_shortage.svg", class: "icon-forecasts" %>
                                         <%= t('million.body.description.body.text13') %>
                                     </td>
                                     <td>

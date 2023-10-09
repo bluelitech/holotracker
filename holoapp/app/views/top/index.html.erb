@@ -45,22 +45,24 @@
                                             <% end %>
                                         </span>
                                         <div class="table-body-name-area-flex">
-                                            <img
-                                                src="<% if data.member.thumbnails %><%= data.member.thumbnails %><% else %>/assets/human.svg<% end %>"
-                                                class="table-thumbnails"
-                                                alt="<% if @locale == 'en' %><%= data.member.name_en %><% else %><%= data.member.name %><% end %>"
-                                                youtubeid="<%= data.member.youtube_id %>" />
+                                            <%=
+                                                image_tag data.member.thumbnails,
+                                                class: "table-thumbnails",
+                                                alt: data.member.name_url,
+                                                youtube_id: data.member.youtube_id
+                                            %>
                                             <% if @locale == 'en' %>
                                                 <%= data.member.name_en %>
                                             <% else %>
                                                 <%= data.member.name %>
                                             <% end %>
                                             <% if data.member.graduation %>
-                                                <img
-                                                    src="/assets/graduation.svg"
-                                                    class="icon-graduation"
-                                                    alt="graduation"
-                                                    title="<%= t('top.data.table.graduation') %>" />
+                                                <%=
+                                                    image_tag "graduation.svg",
+                                                    class: "icon-graduation",
+                                                    alt: "graduation",
+                                                    title: t('top.data.table.graduation')
+                                                %>
                                             <% end %>
                                         </div>
                                     </td>

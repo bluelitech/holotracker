@@ -37,7 +37,7 @@
 
   <body>
     <div id="page_top">
-      <img class="icon-pagetop" src="/assets/angle_top.svg" />
+      <%= image_tag "angle_top.svg", class: "icon-pagetop" %>
     </div>
     <%= yield %>
   </body>
@@ -54,3 +54,4 @@
       class="member_data" />
   <% end %>
 </html>
+<%= javascript_include_tag "menu.js" %>

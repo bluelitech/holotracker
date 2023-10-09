@@ -11,11 +11,12 @@
     <div id="main-right" class="main-right">
         <div id="section-emphasis" class="section emphasis">
             <div class="emphasis-left">
-                <img
-                    src="<% if @member.thumbnails %><%= @member.thumbnails %><% else %>/assets/human.svg<% end %>"
-                    class="emphasis-thumbnails"
-                    alt="<% if @locale == 'en' %><%= @member.name_en %><% else %><%= @member.name %><% end %>"
-                    youtubeid="<%= @member.youtube_id %>" />
+                <%=
+                    image_tag @member.thumbnails,
+                    class: "emphasis-thumbnails",
+                    alt: @member.name_url,
+                    youtube_id: @member.youtube_id
+                %>
             </div>
             <div class="emphasis-right">
                 <% if @locale != 'en' %>
