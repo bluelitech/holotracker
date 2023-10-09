@@ -20,10 +20,10 @@ function render24hoursData(path, isEnglish) {
         const subscriberDiffList = [];
         const subscriberList = [];
         let subscriberMin = -1;
-        let subscriberMax = -1;
+        let subscriberMax = 1;
         let subscriberDiffMin = -1;
-        let subscriberDiffMax = -1;
-        for (let i=0; i<alldata.length; i++) {
+        let subscriberDiffMax = 1;
+        for (let i=0; i<alldata.length-1; i++) {
             const data = alldata[i];
             const subscriber = data.subscriber;
             let subscriberDiff = 0;
@@ -35,13 +35,12 @@ function render24hoursData(path, isEnglish) {
             if (subscriberMax == -1 || subscriber > subscriberMax) subscriberMax = subscriber + 10000;
             if (subscriberDiffMin == -1 || subscriber < subscriberDiffMin) subscriberDiffMin = subscriberDiff - 10000;
             if (subscriberDiffMax == -1 || subscriber > subscriberDiffMax) subscriberDiffMax = subscriberDiff + 10000;
-            subscriberList.unshift(subscriber);
-            subscriberDiffList.unshift(subscriberDiff);
+            subscriberList.push(subscriber);
+            subscriberDiffList.push(subscriberDiff);
         }
 
         // データが24時間分に満たない場合はダミーデータで埋める
-        const subscriberListNum = subscriberList.length;
-        for (let i=0; i < 24 - (subscriberListNum % 24); i++) {
+        while (subscriberList.length < 24) {
             subscriberList.unshift(subscriberList.length > 0 ? subscriberList[0] : 0);
             subscriberDiffList.unshift(0);
         }
@@ -81,7 +80,7 @@ function render14daysData(path, isEnglish) {
         let viewCountMax = -1;
         let viewCountDiffMin = -1;
         let viewCountDiffMax = -1;
-        for (let i=0; i<alldata.length; i++) {
+        for (let i=0; i<alldata.length-1; i++) {
             const data = alldata[i];
             const subscriber = data.subscriber;
             const viewCount = data.video_viewcount;
@@ -100,15 +99,14 @@ function render14daysData(path, isEnglish) {
             if (viewCountMax == -1 || viewCount > viewCountMax) viewCountMax = viewCount + 10000;
             if (viewCountDiffMin == -1 || viewCount < viewCountDiffMin) viewCountDiffMin = viewCountDiff - 10000;
             if (viewCountDiffMax == -1 || viewCount > viewCountDiffMax) viewCountDiffMax = viewCountDiff + 10000;
-            subscriberList.unshift(subscriber);
-            subscriberDiffList.unshift(subscriberDiff);
-            viewCountList.unshift(viewCount);
-            viewCountDiffList.unshift(viewCountDiff);
+            subscriberList.push(subscriber);
+            subscriberDiffList.push(subscriberDiff);
+            viewCountList.push(viewCount);
+            viewCountDiffList.push(viewCountDiff);
         }
 
         // データが14日分に満たない場合はダミーデータで埋める
-        const viewCountListNum = viewCountList.length;
-        for (let i=0; i < 14 - (viewCountListNum % 14); i++) {
+        while (viewCountList.length < 14) {
             subscriberList.unshift(subscriberList.length > 0 ? subscriberList[0] : 0);
             subscriberDiffList.unshift(0);
             viewCountList.unshift(viewCountList.length > 0 ? viewCountList[0] : 0);
