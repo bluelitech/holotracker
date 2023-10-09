@@ -1,9 +1,9 @@
 //= require jquery
 $(function() {
-    setEvent();
+    setMenuEvent();
 });
 
-function setEvent() {
+function setMenuEvent() {
     $('#header-left').on('click', function () {
         $('#header-menu-btn').toggleClass('on');
         if ($('#header-menu-btn').hasClass('on')) {
