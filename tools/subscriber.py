@@ -150,12 +150,12 @@ def apply_db(dt, member_id, channel_data, inserted_round_subscriber):
 
 def update_latest_data(round_dict, dt):
     # 最新の登録者数取得
-    latest_subscriber_sql = 'SELECT member_id, subscriber, strftime("%Y-%m-%d %H:%M", MAX(datetime)) FROM trackers GROUP BY member_id'
+    latest_subscriber_sql = 'SELECT member_id, subscriber, strftime("%Y-%m-%d %H:%M", MAX(datetime)) FROM trackers WHERE datetime>=datetime("now", "-1 day") AND datetime<datetime("now") GROUP BY member_id'
     cursor.execute(latest_subscriber_sql)
     latest_subscribers = cursor.fetchall()
 
-    # 前日最後の登録者数を取得
-    yesterday_subscriber_sql = 'SELECT member_id, subscriber, strftime("%Y-%m-%d %H:%M", MAX(datetime)) FROM trackers WHERE datetime>=datetime("now", "-1 day") AND datetime<datetime("now") GROUP BY member_id'
+    # 24時間前の登録者数を取得
+    yesterday_subscriber_sql = 'SELECT member_id, subscriber, strftime("%Y-%m-%d %H:%M", MIN(datetime)) FROM trackers WHERE datetime>=datetime("now", "-1 day") AND datetime<datetime("now") GROUP BY member_id'
     cursor.execute(yesterday_subscriber_sql)
     yesterday_subscribers = cursor.fetchall()
 
@@ -177,7 +177,7 @@ def update_latest_data(round_dict, dt):
         if member_id in yesterday_subscribers_dict:
             diff = member_subscriber - yesterday_subscribers_dict[member_id]['subscriber']
         else:
-            diff = member_subscriber
+            diff = 0
         
         latest_data_list.append([
             member_subscriber,
