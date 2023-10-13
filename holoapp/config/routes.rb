@@ -11,6 +11,7 @@ Rails.application.routes.draw do
     get '/million', to: 'million#index'
     get '/about', to: 'about#index'
     get '/privacy', to: 'privacy#index'
+    get '/sitemap.xml', to: 'top#sitemap'
     match '*path' => 'application#render_404', via: :all
   end
 end

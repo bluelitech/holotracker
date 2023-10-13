@@ -9,4 +9,7 @@ class TopController < ApplicationController
         @trackers = File.read("#{Rails.root}/../data/holodata.json")
         render json: @trackers
     end
+    def sitemap
+        render xml: File.read("#{Rails.root}/public/sitemap.xml")
+    end
 end
