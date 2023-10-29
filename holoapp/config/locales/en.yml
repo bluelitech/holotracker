@@ -3,7 +3,7 @@ en:
     header:
       title: "HoloTracker"
   top:
-    title: "Transition and List of Subscribers to the Hololive Channel"
+    title: "Hololive Channel Subscriber List"
     chart:
       title: "Transition of Subscribers to the Hololive Channel"
     data:
@@ -36,7 +36,7 @@ en:
         subscriber:
           title: "Subscribers"
           subtitle:
-            all: "All"
+            all: "30 days"
             24hours: "24 hours"
             14days: "14 days"
         viewcount:
@@ -114,6 +114,21 @@ en:
         title: "Channel Subscription Transition"
         text1: "Please note that data collection started on August 16, 2020, so the number of channel subscribers before August 15, 2020, may significantly differ from the actual value."
         text2: "Your understanding is appreciated."
+      data:
+        title: About the data
+        text1: The following data are directly displayed as retrieved from Youtube Data API v3.
+        text2: Channel subscriber count
+        text3: Number of videos
+        text4: Video view count
+        text5: Channel name
+        text6: The following data are manually collected and displayed by the admin.
+        text7: Member's name
+        text8: Belong
+        text9: Debut date
+        text10: Birthday
+        text11: The following data are calculated and displayed uniquely based on values retrieved from Youtube Data API v3.
+        text12: Diff
+        text13: Round
       distribution:
         title: "Regarding the Distribution of Channel Subscriber Count Data"
         text1: "We have started paid distribution of the data we actually use in the Holo Tracker."

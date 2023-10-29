@@ -84,13 +84,6 @@
             <div class="section-body">
                 <div class="section-content">
                     <div class="section-content-title"><%= t('member.data.body.subscriber.title') %></div>
-                    <div class="section-content-subtitle">- <%= t('member.data.body.subscriber.subtitle.all') %> -</div>
-                    <div class="data-graph-wrapper">
-                        <div id="subscriber-all" class="data-graph"></div>
-                        <div class="loading-wrapper">
-                            <div id ="subscriber-all-loading" class="loading"></div>
-                        </div>
-                    </div>
                     <div class="section-content-subtitle">- <%= t('member.data.body.subscriber.subtitle.24hours') %> -</div>
                     <div class="data-graph-wrapper">
                         <div id="subscriber-24hours" class="data-graph"></div>
@@ -103,6 +96,13 @@
                         <div id="subscriber-14days" class="data-graph"></div>
                         <div class="loading-wrapper">
                             <div id ="subscriber-14days-loading" class="loading"></div>
+                        </div>
+                    </div>
+                    <div class="section-content-subtitle">- <%= t('member.data.body.subscriber.subtitle.all') %> -</div>
+                    <div class="data-graph-wrapper">
+                        <div id="subscriber-all" class="data-graph"></div>
+                        <div class="loading-wrapper">
+                            <div id ="subscriber-all-loading" class="loading"></div>
                         </div>
                     </div>
                 </div>
@@ -127,7 +127,6 @@
                         <table id="round-table" class="table round">
                             <thead>
                                 <tr>
-                                    <th><%= t('member.history.body.table.datetime') %></th>
                                     <th><%= t('member.history.body.table.subscriber') %></th>
                                     <th><%= t('member.history.body.table.diff') %></th>
                                 </tr>
