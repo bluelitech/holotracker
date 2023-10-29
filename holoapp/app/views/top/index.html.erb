@@ -5,19 +5,8 @@
         <%= render 'shared/sidemenu' %>
     </div>
     <div id="main-right" class="main-right">
-        <div id="section-chart" class="section">
-            <div class="chart">
-                <div class="chart-title"><%= t('top.chart.title') %></div>
-                <div class="chart-body">
-                    <div id="chart"></div>
-                    <div class="loading-wrapper">
-                        <div id ="chart-loading" class="loading"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
         <div id="section-data" class="section">
-            <div class="section-header bg-blue pointer">
+            <div class="section-header">
                 <div class="section-header-title"><%= t('top.data.title') %></div>
                 <div id="section-header-subtitle" class="section-subtitle"><%= @latests[0].updated_at.strftime("%Y-%m-%d %H:%M") %> JST</div>
             </div>

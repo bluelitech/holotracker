@@ -6,9 +6,9 @@
 $(function() {
     const path = location.pathname;
     const isEnglish = path.match(/^\/en/) ? true : false;
-    renderSubscriberChart('#subscriber-all', `${path}/subscriber_all`, isEnglish);
     render24hoursData(path, isEnglish);
     render14daysData(path, isEnglish);
+    renderSubscriberChart('#subscriber-all', `${path}/subscriber_all`, isEnglish);
     renderRoundTable('#round-table', `${path}/round`, isEnglish);
 });
 
@@ -231,6 +231,7 @@ function renderSubscriberChart(target, path, isEnglish) {
                         }
                     },
                 },
+                toolbar: {tools: {download: false}},
             },
             tooltip: {
                 enabled: true,
@@ -251,7 +252,7 @@ function renderSubscriberChart(target, path, isEnglish) {
             xaxis: {
                 type: "datetime",
                 labels: {
-                    format: isEnglish ? 'yyyy-MM' : 'yyyy年M月'
+                    format: isEnglish ? 'yyyy-MM-dd' : 'yyyy年M月d日'
                 }
             },
             yaxis: {
@@ -311,7 +312,7 @@ function renderMixedChart(params, isEnglish) {
     const options = {
         series: dataSeries,
         labels: params.labelList,
-        chart: {height: 400, width: "100%", type: "line", zoom: {enabled: false}},
+        chart: {height: 400, width: "100%", type: "line", zoom: {enabled: false}, toolbar: {tools: {download: false}}},
         stroke: {show: true, curve: "straight", width: [3, 0], colors: ["#007bff", "#282828"]},
         dataLabels: {enabled: true, enabledOnSeries: [1]},
         xaxis: {
@@ -420,7 +421,6 @@ function renderRoundTable(target, path, isEnglish) {
                 datetime = datetime.slice(0, 10);
             }
             tableBodyElem += `<tr>`;
-            tableBodyElem += `<td class="datetime">${datetime}</td>`;
             tableBodyElem += `<td>${subscriber.toLocaleString()}</td>`;
             tableBodyElem += `<td>`;
             if (diff_debut_dt > 0) {
