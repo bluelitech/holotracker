@@ -12,4 +12,7 @@ class TopController < ApplicationController
     def sitemap
         render xml: File.read("#{Rails.root}/public/sitemap.xml")
     end
+    def ads
+        render xml: File.read("#{Rails.root}/public/ads.txt")
+    end
 end

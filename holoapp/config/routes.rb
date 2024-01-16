@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     get '/about', to: 'about#index'
     get '/privacy', to: 'privacy#index'
     get '/sitemap.xml', to: 'top#sitemap'
+    get '/ads.txt', to: 'top#ads'
     match '*path' => 'application#render_404', via: :all
   end
 end
